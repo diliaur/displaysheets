@@ -21,8 +21,9 @@ function showInfo(data, tabletop) {
 	// data is an array of objects
 	console.log(data);
 	data.forEach( scholarship => {
-		
-	});
+		// use a template
+		});
+
 }
 
 window.addEventListener('DOMContentLoaded', init)

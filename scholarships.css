@@ -1,0 +1,15 @@
+.award {
+	border: 1px solid gray; /* just for the test */
+}
+.award-header {
+	font-size: 16pt;
+	color: #fff;
+	background-color: #888;
+}
+.award-section {
+	border: 1px solid #ccc;
+}
+.award-subtitle {
+	text-transform: uppercase;
+	font-style: italic;
+}

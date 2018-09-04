@@ -1,5 +1,10 @@
+body {
+	font-family: sans-serif;
+	font-size: 12pt;
+}
 .award {
 	border: 1px solid gray; /* just for the test */
+	margin-bottom:1em;
 }
 .award-header {
 	font-size: 16pt;
@@ -7,7 +12,10 @@
 	background-color: #888;
 }
 .award-section {
-	border: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+}
+.award-header, .award-section {
+	padding: 1em;
 }
 .award-subtitle {
 	text-transform: uppercase;

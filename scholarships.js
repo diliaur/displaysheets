@@ -18,7 +18,7 @@ function init() {
 function showInfo(data, tabletop) {
 	console.log('Successfully processed!')
 	// data is an array of objects
-	// console.log(data);
+	console.log(data);
 
 	var wrapper = $('.award-wrapper');
 	var award = $('.award',wrapper).clone();
@@ -32,23 +32,42 @@ function showInfo(data, tabletop) {
 		// fill out the temp award
 		// -----------------------
 		// about the award
-		$('.award-header',tempAward).append(scholarship.name);
-		$('.fund-source',tempAward).append('Fund source: ' + scholarship.fundsource);
-		$('.length',tempAward).append('Length: ' + scholarship.length);
-		$('.type',tempAward).append('Funding type: ' + scholarship.fundingtype);
-		$('.place-of-study',tempAward).append('Place of study: ' + scholarship.placeofstudy);
-		$('.sea-country-focus',tempAward).append('SEA country focus: ' + scholarship.seacountryfocus);
-		$('.discipline-focus',tempAward).append('Discipline focus: ' + scholarship.disciplinefocus);
+		$('.award-header',tempAward).append(scholarship.name); // no if because there should always be a name
+		if (scholarship.fundsource) {
+			$('.fund-source',tempAward).append('<strong>Fund source</strong>: ' + scholarship.fundsource);
+		}
+		if (scholarship.length) {
+			$('.length',tempAward).append('<strong>Length</strong>: ' + scholarship.length);
+		}
+		if (scholarship.fundingtype) {
+			$('.type',tempAward).append('<strong>Funding type</strong>: ' + scholarship.fundingtype);
+		}
+		if (scholarship.placeofstudy) {
+			$('.place-of-study',tempAward).append('<strong>Place of study</strong>: ' + scholarship.placeofstudy);
+		}
+		if (scholarship.seacountryfocus) {
+			$('.sea-country-focus',tempAward).append('<strong>SEA country focus</strong>: ' + scholarship.seacountryfocus);
+		}
+		if (scholarship.disciplinefocus) {
+			$('.discipline-focus',tempAward).append('<strong>Discipline focus</strong>: ' + scholarship.disciplinefocus);
+		}
+		
 		// eligibility info
-		$('.class-level',tempAward).append('Class level: ' + scholarship.gradelevel);
-		$('.citizenship',tempAward).append('Citizenship: ' + scholarship.citizenship);
+		if (scholarship.gradelevel) {
+			$('.class-level',tempAward).append('<strong>Class level</strong>: ' + scholarship.gradelevel);
+		}
+		if (scholarship.citizenship) {
+			$('.citizenship',tempAward).append('<strong>Citizenship</strong>: ' + scholarship.citizenship);
+		}
+		
 		// more info
-		$('.website',tempAward).append('<a href=\'' + scholarship.url + '\'>Website</a>');
-		$('.contact-point',tempAward).append('Contact point: ' + scholarship.contactname + ' (' + scholarship.contactemail + ')');
-		$('.description',tempAward).append('Description:<br/>' + scholarship.description);
-
-		// $('.',tempAward).append(': ' + scholarship.);
-
+		$('.website',tempAward).append('<a href=\'' + scholarship.url + '\'><strong>Website</strong></a><br/>');  // no if because there should always be a URL
+		if (scholarship.contactname && scholarship.contactemail) {
+			$('.contact-point',tempAward).append('<strong>Contact point</strong>: ' + scholarship.contactname + ' (<a href=\'mailto:' + scholarship.contactemail + '\'>' + scholarship.contactemail +'</a>)<br/>'); // IF	
+		}
+		if (scholarship.description) {
+			$('.description',tempAward).append('<strong>Description</strong>:<br/>' + scholarship.description); // IF
+		}
 		// -----------------------
 		// end award fill out
 		// -----------------------

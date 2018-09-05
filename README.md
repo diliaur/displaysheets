@@ -7,9 +7,9 @@ Building a small wordpress plugin to port data in from a google sheet, display i
 ## To Do
 
 - [] Find a more robust way to pull this off.
- - _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if the API breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
+	- _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if the API breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
 
-##Libraries explored or used
+## Libraries explored or used
 
 - [Tabletop.js](https://github.com/jsoma/tabletop)
 - [jQuery](https://jquery.com/)

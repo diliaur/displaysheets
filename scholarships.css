@@ -1,6 +1,6 @@
 body {
 	font-family: sans-serif;
-	font-size: 12pt;
+	font-size: 11pt;
 }
 .award {
 	border: 1px solid gray; /* just for the test */
@@ -9,21 +9,40 @@ body {
 .award-header {
 	font-size: 14pt;
 	font-weight: bold;
-	color: #fff;
-	background-color: #888;
+	color: #333;
 }
 .award-section {
-	border-bottom: 1px solid #ccc;
+/*	border-bottom: 1px solid #ccc; this stops working bc of float of .col-left and .col-right*/
 }
 .award-header, .award-section {
-	padding: 1em;
+	padding: .5em 1em;
 }
 .award-subtitle {
 	text-transform: uppercase;
 	font-style: italic;
+	width: 100%;
+	border-bottom:1px dotted #888;
+	margin-bottom: .25em;
 }
 .award-info-style {
-	background-color: orange;
+/*	background-color: orange;
 	padding: .25em;
-	line-height: 1.5em;
+	line-height: 1.5em;*/
+}
+.col-left, .col-right {
+	width:50%;
+	float:left;
+}
+.award-section:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+/* the titles of the information like 'funding source' and 'length' */
+.award-attribute {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.award-attribute:after {
+	content: ": ";
 }

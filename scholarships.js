@@ -34,39 +34,61 @@ function showInfo(data, tabletop) {
 		// about the award
 		$('.award-header',tempAward).append(scholarship.name); // no if because there should always be a name
 		if (scholarship.fundsource) {
-			$('.fund-source',tempAward).append('<strong>Fund source</strong>: ' + scholarship.fundsource);
+			$('.fund-source',tempAward).append(scholarship.fundsource);
 			$('.fund-source',tempAward).addClass("award-info-style");
 			// contextualizing the element selection with the second param is also important in applying class
+		} else {
+			$('.fund-source',tempAward).detach();
 		}
 		if (scholarship.length) {
-			$('.length',tempAward).append('<strong>Length</strong>: ' + scholarship.length);
+			$('.length',tempAward).append(scholarship.length);
 			$('.length',tempAward).addClass("award-info-style");
+		} else {
+			$('.length',tempAward).detach();
 		}
 		if (scholarship.fundingtype) {
-			$('.type',tempAward).append('<strong>Funding type</strong>: ' + scholarship.fundingtype);
+			$('.type',tempAward).append(scholarship.fundingtype);
 			$('.type',tempAward).addClass("award-info-style");
+		} else {
+			$('.type',tempAward).detach();
 		}
 		if (scholarship.placeofstudy) {
-			$('.place-of-study',tempAward).append('<strong>Place of study</strong>: ' + scholarship.placeofstudy);
+			$('.place-of-study',tempAward).append(scholarship.placeofstudy);
 			$('.place-of-study',tempAward).addClass("award-info-style");
+		} else {
+			$('.place-of-study',tempAward).detach();
 		}
 		if (scholarship.seacountryfocus) {
-			$('.sea-country-focus',tempAward).append('<strong>SEA country focus</strong>: ' + scholarship.seacountryfocus);
+			$('.sea-country-focus',tempAward).append(scholarship.seacountryfocus);
 			$('.sea-country-focus',tempAward).addClass("award-info-style");
+		} else {
+			$('.sea-country-focus',tempAward).detach();
 		}
 		if (scholarship.disciplinefocus) {
-			$('.discipline-focus',tempAward).append('<strong>Discipline focus</strong>: ' + scholarship.disciplinefocus);
+			$('.discipline-focus',tempAward).append(scholarship.disciplinefocus);
 			$('.discipline-focus',tempAward).addClass("award-info-style");
+		} else {
+			$('.discipline-focus',tempAward).detach();
 		}
 		
 		// eligibility info
-		if (scholarship.gradelevel) {
-			$('.class-level',tempAward).append('<strong>Class level</strong>: ' + scholarship.gradelevel);
-			$('.class-level',tempAward).addClass("award-info-style");
-		}
-		if (scholarship.citizenship) {
-			$('.citizenship',tempAward).append('<strong>Citizenship</strong>: ' + scholarship.citizenship);
-			$('.citizenship',tempAward).addClass("award-info-style");
+		if (scholarship.gradelevel && scholarship.citizenship) {
+			if (scholarship.gradelevel) {
+				$('.class-level',tempAward).append(scholarship.gradelevel);
+				$('.class-level',tempAward).addClass("award-info-style");
+			} else {
+				$('.class-level',tempAward).detach();
+			}
+			if (scholarship.citizenship) {
+				$('.citizenship',tempAward).append(scholarship.citizenship);
+				$('.citizenship',tempAward).addClass("award-info-style");
+			} else {
+				$('.citizenship',tempAward).detach();
+			}
+		} else { // sometimes there aren't class level or citizenship restrictions, so print:
+			$('.citizenship',tempAward).detach();
+			$('.class-level',tempAward).detach();
+			$('.award-eligibility',tempAward).append("<p>There are no class level or citizenship restrictions.</p>");
 		}
 		
 		// more info

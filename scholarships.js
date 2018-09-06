@@ -94,10 +94,10 @@ function showInfo(data, tabletop) {
 		// more info
 		$('.website',tempAward).append('<a href=\'' + scholarship.url + '\'><strong>Website</strong></a><br/>');  // no if because there should always be a URL
 		if (scholarship.contactname && scholarship.contactemail) {
-			$('.contact-point',tempAward).append('<strong>Contact point</strong>: ' + scholarship.contactname + ' (<a href=\'mailto:' + scholarship.contactemail + '\'>' + scholarship.contactemail +'</a>)<br/>'); // IF	
+			$('.contact-point',tempAward).append(scholarship.contactname + ' (<a href=\'mailto:' + scholarship.contactemail + '\'>' + scholarship.contactemail +'</a>)<br/>'); // IF	
 		}
 		if (scholarship.description) {
-			$('.description',tempAward).append('<strong>Description</strong>:<br/>' + scholarship.description); // IF
+			$('.description',tempAward).append(scholarship.description); // IF
 		}
 		// -----------------------
 		// end award fill out

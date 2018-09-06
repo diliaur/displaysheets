@@ -6,6 +6,7 @@ Building a small wordpress plugin to port data in from a google sheet, display i
 
 ## To Do
 
+- [] Add filtration system on scholarship award metadata
 - [] Find a more robust way to pull this off.
 	- _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if the API breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
 

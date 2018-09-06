@@ -35,29 +35,38 @@ function showInfo(data, tabletop) {
 		$('.award-header',tempAward).append(scholarship.name); // no if because there should always be a name
 		if (scholarship.fundsource) {
 			$('.fund-source',tempAward).append('<strong>Fund source</strong>: ' + scholarship.fundsource);
+			$('.fund-source',tempAward).addClass("award-info-style");
+			// contextualizing the element selection with the second param is also important in applying class
 		}
 		if (scholarship.length) {
 			$('.length',tempAward).append('<strong>Length</strong>: ' + scholarship.length);
+			$('.length',tempAward).addClass("award-info-style");
 		}
 		if (scholarship.fundingtype) {
 			$('.type',tempAward).append('<strong>Funding type</strong>: ' + scholarship.fundingtype);
+			$('.type',tempAward).addClass("award-info-style");
 		}
 		if (scholarship.placeofstudy) {
 			$('.place-of-study',tempAward).append('<strong>Place of study</strong>: ' + scholarship.placeofstudy);
+			$('.place-of-study',tempAward).addClass("award-info-style");
 		}
 		if (scholarship.seacountryfocus) {
 			$('.sea-country-focus',tempAward).append('<strong>SEA country focus</strong>: ' + scholarship.seacountryfocus);
+			$('.sea-country-focus',tempAward).addClass("award-info-style");
 		}
 		if (scholarship.disciplinefocus) {
 			$('.discipline-focus',tempAward).append('<strong>Discipline focus</strong>: ' + scholarship.disciplinefocus);
+			$('.discipline-focus',tempAward).addClass("award-info-style");
 		}
 		
 		// eligibility info
 		if (scholarship.gradelevel) {
 			$('.class-level',tempAward).append('<strong>Class level</strong>: ' + scholarship.gradelevel);
+			$('.class-level',tempAward).addClass("award-info-style");
 		}
 		if (scholarship.citizenship) {
 			$('.citizenship',tempAward).append('<strong>Citizenship</strong>: ' + scholarship.citizenship);
+			$('.citizenship',tempAward).addClass("award-info-style");
 		}
 		
 		// more info

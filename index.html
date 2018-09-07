@@ -28,6 +28,49 @@ This key defines some terminology used in the scholarship descriptions.
 
 <h2>Scholarships</h2>
 
+<!-- this is going to hold the filter options -->
+<div class="filter-wrapper">
+	<div>
+		Filter Scholarships
+	</div>
+	<form>
+		<fieldset>
+			<legend>Southeast Asia Country</legend>
+			<input type="checkbox" id="country-brunei" value="brunei"><label for="country-brunei">Brunei</label>
+			<input type="checkbox" id="country-cambodia" value="cambodia"><label for="country-cambodia">Cambodia</label>
+			<input type="checkbox" id="country-indonesia" value="indonesia"><label for="country-indonesia">Indonesia</label>
+			<input type="checkbox" id="country-laos" value="laos"><label for="country-laos">Laos</label>
+			<input type="checkbox" id="country-malaysia" value="malaysia"><label for="country-malaysia">Malaysia</label>
+			<input type="checkbox" id="country-myanmar" value="myanmar"><label for="country-myanmar">Myanmar</label>
+			<input type="checkbox" id="country-philippines" value="philippines"><label for="country-philippines">Philippines</label>
+			<input type="checkbox" id="country-singapore" value="singapore"><label for="country-singapore">Singapore</label>
+			<input type="checkbox" id="country-thailand" value="thailand"><label for="country-thailand">Thailand</label>
+			<input type="checkbox" id="country-timor-leste" value="timor-leste"><label for="country-timor-leste">Timor-Leste</label>
+			<input type="checkbox" id="country-vietnam" value="vietnam"><label for="country-vietnam">Vietnam</label>
+		</fieldset>
+		<fieldset>
+			<legend>Scholarship Criteria</legend>
+			<input type="checkbox" id="fund-source-internal" value="fund-source-internal"><label for="fund-source-internal">Internal/UH Manoa funding</label>
+			<input type="checkbox" id="fund-source-external" value="fund-source-external"><label for="fund-source-external">External/Non-UH Manoa</label>
+			<input type="checkbox" id="" value=""><label for=""></label>
+		</fieldset>
+		<fieldset>
+			<legend>Citizenship</legend>
+			<input type="checkbox" id="eligibility-citizenship-us" value="elibility-citizenship-us"><label for="elibility-citizenship-us">US Citizen</label>
+			<input type="checkbox" id="eligibility-citizenship-nonus" value="elibility-citizenship-nonus"><label for="elibility-citizenship-nonus">non-US Citizen</label>
+			<input type="checkbox" id="eligibility-citizenship-any" value="elibility-citizenship-any"><label for="elibility-citizenship-any">Any/no restriction</label>
+		</fieldset>
+		<fieldset>
+			<legend>Level</legend>
+			<input type="checkbox" id="eligibility-level-any" value="eligibility-level-any"><label for="eligibility-level-any">Any Grade or Professional Level</label>
+			<input type="checkbox" id="eligibility-level-undergraduate" value="eligibility-level-undergraduate"><label for="eligibility-level-undergraduate">Undergraduate</label>
+			<input type="checkbox" id="eligibility-level-graduate" value="eligibility-level-graduate"><label for="eligibility-level-graduate">Graduate</label>
+			<input type="checkbox" id="eligibility-level-professional" value="eligibility-level-professional"><label for="eligibility-level-professional">Professional</label>
+		</fieldset>
+	</form>
+</div>
+
+<hr>
 <!-- this is a "template" which the JS will empty, clone, and fill out for each award -->
 <div class="award-wrapper"><!-- will make the js more specific so not just appending to body -->
 	<div class="award">

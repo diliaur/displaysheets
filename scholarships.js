@@ -107,7 +107,6 @@ function showInfo(data, tabletop) {
 		wrapper.append(tempAward);
 
 		});
-
 }
 
 window.addEventListener('DOMContentLoaded', init)

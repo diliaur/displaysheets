@@ -28,6 +28,8 @@ This key defines some terminology used in the scholarship descriptions.
 
 <h2>Scholarships</h2>
 
+<div id="content-wrapper"><!-- for list.js functionality -->
+
 <!-- this is going to hold the filter options -->
 <div class="filter-wrapper">
 	<div>
@@ -69,10 +71,13 @@ This key defines some terminology used in the scholarship descriptions.
 		</fieldset>
 	</form>
 </div>
-
+<hr>
+	<input class="search" placeholder="search">
+	<button class="sort" data-sort="award-header">Sort by Name</button>
 <hr>
 <!-- this is a "template" which the JS will empty, clone, and fill out for each award -->
-<div class="award-wrapper"><!-- will make the js more specific so not just appending to body -->
+<div class="award-wrapper list"><!-- will make the js more specific so not just appending to body -->
+	<!-- list class is for List.js functionality -->
 	<div class="award">
 		<div class="award-header"></div>
 		<div class="award-section award-about">
@@ -102,7 +107,7 @@ This key defines some terminology used in the scholarship descriptions.
 	</div>
 </div>
 
-<!-- end stuff on page and not in plugin -->
+</div>
 
 <!-- best place to put script links is at the bottom I guess ... -->
 <!-- "just before you need it and no sooner" -->
@@ -113,7 +118,9 @@ This key defines some terminology used in the scholarship descriptions.
   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
   integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
   crossorigin="anonymous"></script>
- <!-- project javascript -->
+<!-- List.js for filtration/sorting -->
+<script src="list.min.js"></script>
+<!-- project javascript -->
 <script src="scholarships.js"></script>
 </body>
 </html>

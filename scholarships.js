@@ -107,6 +107,15 @@ function showInfo(data, tabletop) {
 		wrapper.append(tempAward);
 
 		});
+
 }
 
 window.addEventListener('DOMContentLoaded', init)
+
+$(document).ready( function() {
+	var options = {
+	  valueNames: [ 'award-header' ]
+	};
+
+	var userList = new List('content-wrapper', options);
+});

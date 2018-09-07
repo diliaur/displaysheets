@@ -1,4 +1,4 @@
-console.log("connected!"); // runs before any of the doc is loaded.
+//console.log("connected!"); // runs before any of the doc is loaded.
 
 /* Link to the spreadsheet */
 // https://docs.google.com/spreadsheets/d/13JTS8DX4z5BZ6bTwgkmssxcERodv6Tl5OKaj_EJ2qIA/edit?usp=sharing

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Scratch Pad</title><!-- try different html/js things without messing up main files -->
+</head>
+<body>
+
+<div id="award-wrapper">
+	<!-- filter buttons and search MUST be inside the wrapper, along with the list to be sorted -->
+	<input class="search" placeholder="search">
+	<button class="sort" data-sort="award-name">Sort by Name</button>
+
+	<div class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
+		<div class="award">
+			<div class="award-name">
+				FLAS
+			</div>
+			<div class="award-length">
+				&nbsp; long term
+			</div>
+		</div>
+		<div class="award">
+			<div class="award-name">
+				Luce Undergrad
+			</div>
+			<div class="award-length">
+				&nbsp; long term
+			</div>
+		</div>
+		<div class="award">
+			<div class="award-name">
+				YSEALI Fellowship
+			</div>
+			<div class="award-length">
+				&nbsp; short term
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- import javascripts -->
+<script src="list.min.js"></script>
+<script src="scratch.js"></script><!-- custom -->
+</body>
+</html>

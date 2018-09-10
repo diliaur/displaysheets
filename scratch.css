@@ -39,3 +39,10 @@ input.search {
 	width: 100%;
 	box-sizing: border-box;
 }
+.content-pane {
+	float: left;
+}
+#sidebar {
+	width: 200px;
+	height: 100%;
+}

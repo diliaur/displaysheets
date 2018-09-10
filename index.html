@@ -6,42 +6,44 @@
 </head>
 <body>
 
-<div id="sidebar" class="content-pane">
-	This is a sidebar! It's going to be collapsible and also have the eligibility checkboxes n stuff for easy filtration purposes. Inspiration: CNET product search and other sites like that
-</div>
-
-<div id="award-wrapper" class="content-pane">
-	<!-- filter buttons and search MUST be inside the wrapper, along with the list to be sorted -->
-	<div class="search-wrapper">
-		<label>Search by keyword:
-			<input class="search" placeholder="search by keyword"><br/>
-		</label>
-		<span class="search-help">Results will be narrowed by matching to search terms.</span>
+<div class="content-wrapper">
+	<div id="sidebar" class="content-pane">
+	This bar will contain the eligibility checkboxes for easy filtration purposes.
 	</div>
 
-	<table class="awards-table">
-		<thead>
-			<tr>
-				<th class="sort" data-sort="name">Name</th>
-				<th>Website</th>
-				<th class="sort" data-sort="fundsource">Funding Source</th>
-				<th class="sort" data-sort="fundingtype">Funding Type</th>
-				<th class="sort" data-sort="length">Length</th>
-				<th>Place of Study</th>
-				<th>SEA Country Focus</th>
-				<th>Discipline Focus</th>
-				<th class="sort" data-sort="gradelevel">Class Level</th>
-				<th class="sort" data-sort="citizenship">Citizenship Requirement</th>
-				<th>Contact Name</th>
-				<th>Contact Email</th>
-			</tr>
-		</thead>
-		<tbody class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
-		<!-- This is where the data will go. 
-		The structure is populated by List.js & Tabletop -->
-		</tbody>
-	</table>
-	
+	<div id="award-wrapper" class="content-pane">
+		<!-- filter buttons and search MUST be inside the wrapper, along with the list to be sorted -->
+		<div class="search-wrapper">
+			<label>Search by keyword:
+				<input class="search" placeholder="search by keyword"><br/>
+			</label>
+			<span class="search-help">Results will be narrowed by matching to search terms.</span>
+		</div>
+
+		<table class="awards-table">
+			<thead>
+				<tr>
+					<th class="sort" data-sort="name">Name</th>
+					<th>Website</th>
+					<th class="sort" data-sort="fundsource">Funding Source</th>
+					<th class="sort" data-sort="fundingtype">Funding Type</th>
+					<th class="sort" data-sort="length">Length</th>
+					<th>Place of Study</th>
+					<th>SEA Country Focus</th>
+					<th>Discipline Focus</th>
+					<th class="sort" data-sort="gradelevel">Class Level</th>
+					<th class="sort" data-sort="citizenship">Citizenship Requirement</th>
+					<th>Contact Name</th>
+					<th>Contact Email</th>
+				</tr>
+			</thead>
+			<tbody class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
+			<!-- This is where the data will go. 
+			The structure is populated by List.js & Tabletop -->
+			</tbody>
+		</table>
+		
+	</div>
 </div>
 
 <!-- import javascripts -->

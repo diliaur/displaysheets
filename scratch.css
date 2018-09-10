@@ -1,0 +1,21 @@
+body {
+	font-family: sans-serif;
+	font-size: 11pt;
+}
+th.sort { /* these are the sortable headers */
+	text-decoration: underline;
+}
+table {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+table th, table td {
+	padding: .5em;
+}
+table th {
+	background-color: orange;
+}
+.sticky {
+	position: absolute;
+	top:0; left:0;
+}

@@ -10,10 +10,28 @@
 	<input class="search" placeholder="search by keyword"><br/>
 	<button class="sort" data-sort="name">Sort by Name</button>
 
-	<div class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>Website</td>
+				<td>Funding Source</td>
+				<td>Funding Type</td>
+				<td>Length</td>
+				<td>Place of Study</td>
+				<td>SEA Country Focus</td>
+				<td>Discipline Focus</td>
+				<td>Class Level</td>
+				<td>Citizenship Requirement</td>
+				<td>Contact Name</td>
+				<td>Contact Email</td>
+			</tr>
+		</thead>
+		<tbody class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
 		<!-- This is where the data will go. 
-		The rest of the structure is populated by List.js & Tabletop -->
-	</div>
+		The structure is populated by List.js & Tabletop -->
+		</tbody>
+	</table>
 	
 </div>
 

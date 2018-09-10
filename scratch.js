@@ -32,6 +32,12 @@ function showInfo(data, tabletop) {
 
 window.addEventListener('DOMContentLoaded', init)
 
-/* make the header sticker */
+/* ------------------------------ *
+ * Sticky header
+ * ------------------------------ */
 
 // if the header hits the top of the window it should stick
+
+/* ------------------------------ *
+ * Checkbox filtration
+ * ------------------------------ */

@@ -20,7 +20,6 @@ Building a small wordpress plugin to port data in from a google sheet, display i
 
 ## Libraries explored or used
 
-- [Tabletop.js](https://github.com/jsoma/tabletop)
+- [Tabletop.js](https://github.com/jsoma/tabletop) - read in google sheet data
+- [List JS](listjs.com) - filtration, sorting, and template output
 - [jQuery](https://jquery.com/)
-- [List JS](listjs.com) (to check out)
-

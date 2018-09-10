@@ -1,126 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Scholarships</title>
-	<link rel="stylesheet" type="text/css" href="scholarships.css">
+	<title>Scratch Pad</title><!-- try different html/js things without messing up main files -->
+	<link rel="stylesheet" type="text/css" href="scratch.css">
 </head>
 <body>
 
-<!-- this description stuff will be on the scholarships page but not in the plugin -->
-<h1>Southeast Asia Related Scholarships</h1>
+<div id="sidebar" class="content-pane">
+	This is a sidebar! It's going to be collapsible and also have the eligibility checkboxes n stuff for easy filtration purposes. Inspiration: CNET product search and other sites like that
+</div>
 
-This is a list of scholarships which may be applicable or related to study in or of Southeast Asia. We try to keep it up to date, but due to staffing constraints, some things may get past us. Please alert us of any broken links or other issues at <a href="mailto:cseasweb@hawaii.edu">cseasweb@hawaii.edu</a>. Because this is a curated list (these awards, unless otherwise stated, are not administered by CSEAS), please see the contact point or website for more information on specific awards.
-
-You can also examine the spreadsheet itself if you prefer a tabular data format.
-
-<h2>Key</h2>
-This key defines some terminology used in the scholarship descriptions.
-<ul>
-	<li>Fund source: internal/external - whether the source is UH Mānoa or an external entity.</li>
-	<li>Length: short term/long term/n/a - period of time of the award if stated. Time periods mostly apply to workshop and professional devlopment type awards</li>
-	<li>Grade level: undergraduate/graduate/faculty/professional</li>
-	<li>Place of Study - country or countries where you will be able to apply the award</li>
-	<li>SEA Country Focus - some awards are specific to a certain country or countries in ASEAN</li>
-	<li>Discipline Focus - which fields/disciplines are covered by the award</li>
-	<li>Citizenship - citizenship requirement of the applicant</li>
-</ul>
-
-<h2>Scholarships</h2>
-
-<div id="content-wrapper"><!-- for list.js functionality -->
-
-<!-- this is going to hold the filter options -->
-<div class="filter-wrapper">
-	<div>
-		Filter Scholarships
+<div id="award-wrapper" class="content-pane">
+	<!-- filter buttons and search MUST be inside the wrapper, along with the list to be sorted -->
+	<div class="search-wrapper">
+		<label>Search by keyword:
+			<input class="search" placeholder="search by keyword"><br/>
+		</label>
+		<span class="search-help">Results will be narrowed by matching to search terms.</span>
 	</div>
-	<form>
-		<fieldset>
-			<legend>Southeast Asia Country</legend>
-			<input type="checkbox" id="country-brunei" value="brunei"><label for="country-brunei">Brunei</label>
-			<input type="checkbox" id="country-cambodia" value="cambodia"><label for="country-cambodia">Cambodia</label>
-			<input type="checkbox" id="country-indonesia" value="indonesia"><label for="country-indonesia">Indonesia</label>
-			<input type="checkbox" id="country-laos" value="laos"><label for="country-laos">Laos</label>
-			<input type="checkbox" id="country-malaysia" value="malaysia"><label for="country-malaysia">Malaysia</label>
-			<input type="checkbox" id="country-myanmar" value="myanmar"><label for="country-myanmar">Myanmar</label>
-			<input type="checkbox" id="country-philippines" value="philippines"><label for="country-philippines">Philippines</label>
-			<input type="checkbox" id="country-singapore" value="singapore"><label for="country-singapore">Singapore</label>
-			<input type="checkbox" id="country-thailand" value="thailand"><label for="country-thailand">Thailand</label>
-			<input type="checkbox" id="country-timor-leste" value="timor-leste"><label for="country-timor-leste">Timor-Leste</label>
-			<input type="checkbox" id="country-vietnam" value="vietnam"><label for="country-vietnam">Vietnam</label>
-		</fieldset>
-		<fieldset>
-			<legend>Scholarship Criteria</legend>
-			<input type="checkbox" id="fund-source-internal" value="fund-source-internal"><label for="fund-source-internal">Internal/UH Manoa funding</label>
-			<input type="checkbox" id="fund-source-external" value="fund-source-external"><label for="fund-source-external">External/Non-UH Manoa</label>
-			<input type="checkbox" id="" value=""><label for=""></label>
-		</fieldset>
-		<fieldset>
-			<legend>Citizenship</legend>
-			<input type="checkbox" id="eligibility-citizenship-us" value="elibility-citizenship-us"><label for="elibility-citizenship-us">US Citizen</label>
-			<input type="checkbox" id="eligibility-citizenship-nonus" value="elibility-citizenship-nonus"><label for="elibility-citizenship-nonus">non-US Citizen</label>
-			<input type="checkbox" id="eligibility-citizenship-any" value="elibility-citizenship-any"><label for="elibility-citizenship-any">Any/no restriction</label>
-		</fieldset>
-		<fieldset>
-			<legend>Level</legend>
-			<input type="checkbox" id="eligibility-level-any" value="eligibility-level-any"><label for="eligibility-level-any">Any Grade or Professional Level</label>
-			<input type="checkbox" id="eligibility-level-undergraduate" value="eligibility-level-undergraduate"><label for="eligibility-level-undergraduate">Undergraduate</label>
-			<input type="checkbox" id="eligibility-level-graduate" value="eligibility-level-graduate"><label for="eligibility-level-graduate">Graduate</label>
-			<input type="checkbox" id="eligibility-level-professional" value="eligibility-level-professional"><label for="eligibility-level-professional">Professional</label>
-		</fieldset>
-	</form>
-</div>
-<hr>
-	<input class="search" placeholder="search">
-	<button class="sort" data-sort="award-header">Sort by Name</button>
-<hr>
-<!-- this is a "template" which the JS will empty, clone, and fill out for each award -->
-<div class="award-wrapper list"><!-- will make the js more specific so not just appending to body -->
-	<!-- list class is for List.js functionality -->
-	<div class="award">
-		<div class="award-header"></div>
-		<div class="award-section award-about">
-			<div class="award-subtitle">About</div>
-			<div class="col-left">
-				<div class="fund-source"><span class="award-attribute">Funding Source</span></div>
-				<div class="length"><span class="award-attribute">Length</span></div>
-				<div class="type"><span class="award-attribute">Funding Type</span></div>
-			</div>
-			<div class="col-right">
-				<div class="place-of-study"><span class="award-attribute">Place of Study</span></div>
-				<div class="sea-country-focus"><span class="award-attribute">SEA Country Focus</span></div>
-				<div class="discipline-focus"><span class="award-attribute">Discipline Focus</span></div>
-			</div>
-		</div>
-		<div class="award-section award-eligibility">
-			<div class="award-subtitle">Basic Eligibility</div>
-			<div class="class-level"><span class="award-attribute">Level</span></div>
-			<div class="citizenship"><span class="award-attribute">Citizenship</span></div>
-		</div>
-		<div class="award-section award-findOutMore">
-			<div class="award-subtitle">Find Out More</div>
-			<div class="website"></div>
-			<div class="contact-point"><span class="award-attribute">Contact Point</span></div>
-			<div class="description"><span class="award-attribute">Description</span><br/></div>
-		</div>
-	</div>
+
+	<table class="awards-table">
+		<thead>
+			<tr>
+				<th class="sort" data-sort="name">Name</th>
+				<th>Website</th>
+				<th class="sort" data-sort="fundsource">Funding Source</th>
+				<th class="sort" data-sort="fundingtype">Funding Type</th>
+				<th class="sort" data-sort="length">Length</th>
+				<th>Place of Study</th>
+				<th>SEA Country Focus</th>
+				<th>Discipline Focus</th>
+				<th class="sort" data-sort="gradelevel">Class Level</th>
+				<th class="sort" data-sort="citizenship">Citizenship Requirement</th>
+				<th>Contact Name</th>
+				<th>Contact Email</th>
+			</tr>
+		</thead>
+		<tbody class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
+		<!-- This is where the data will go. 
+		The structure is populated by List.js & Tabletop -->
+		</tbody>
+	</table>
+	
 </div>
 
-</div>
-
-<!-- best place to put script links is at the bottom I guess ... -->
-<!-- "just before you need it and no sooner" -->
+<!-- import javascripts -->
 <!-- Tabletop -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-<!-- jQuery -->
-<script
-  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
-  crossorigin="anonymous"></script>
-<!-- List.js for filtration/sorting -->
+<!-- List.js for sort and filter -->
 <script src="list.min.js"></script>
-<!-- project javascript -->
-<script src="scholarships.js"></script>
+<!-- custom -->
+<script src="scratch.js"></script>
 </body>
 </html>

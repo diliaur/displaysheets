@@ -6,6 +6,8 @@ Building a small wordpress plugin to port data in from a google sheet, display i
 
 ## To Do
 
+- [ ] Sticky first column (award names) (maybe)
+- [ ] Make header row (and maybe search bar also) sticky
 - [ ] Add responsive sidebar to house checkbox filtration or other info
 - [ ] Add checkbox filters (on certain columns only)
 - [ ] Find a more robust way to pull this off.

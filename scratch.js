@@ -32,9 +32,19 @@ function showInfo(data, tabletop) {
 	
 	box.addEventListener('click',function(){
 		if (box.checked) {
-			awardList.search("us",['citizenship']);
+
+			awardList.filter( function(item) {
+				if ((item.values().citizenship.toLowerCase().search("us") != -1) ||
+					(item.values().citizenship.toLowerCase().search("united states") != -1) &&
+				    (item.values().citizenship.toLowerCase().search("non-us") == -1)) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+			
 		} else {
-			awardList.search("");
+			awardList.filter();
 		}
 	});
 

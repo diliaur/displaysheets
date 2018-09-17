@@ -2,10 +2,12 @@
 
 ## Basic About
 
-Building a small wordpress plugin to port data in from a google sheet, display it nicely, and allow filtration by column. Test case is the scholarships page for my place of work. Eventually the plugin will be generalized (how this will look conceptually will be addressed at some point in the future).
+This is a small app to allow filtration and search of [CSEAS](http://www.cseashawaii.org) compiled (mainly Southeast Asia-focused) scholarships and fellowships (a re-do of the site's [scholarships page](http://www.cseashawaii.org/students/scholarships/)). It pulls in data from a Google Sheet of the scholarships, allowing for easy editing without touching code, and presents it in sortable/filterable form. See _Libraries Explored or Used_ for which JS libraries enable this.
 
 ## To Do
 
+- [ ] Add description to page & terminology key as in old/index.html
+- [ ] To save space, make the description & key toggle-able
 - [ ] Sticky first column (award names) (maybe)
 - [ ] Make header row (and maybe search bar also) sticky
 - [ ] Add responsive sidebar to house checkbox filtration or other info

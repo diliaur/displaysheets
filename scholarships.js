@@ -28,10 +28,13 @@ function showInfo(data, tabletop) {
 
 	var awardList = new List('award-wrapper', options, data);
 
-	let box = document.getElementById('check-citizenship');
 	
-	box.addEventListener('click',function(){
-		if (box.checked) {
+	/* 
+	 * FILTER CHECK BOXES
+	 */
+	let boxUS = document.getElementById('eligibility-citizenship-us');
+	boxUS.addEventListener('click',function(){
+		if (boxUS.checked) {
 
 			awardList.filter( function(item) {
 				if ((item.values().citizenship.toLowerCase().search("us") != -1) ||
@@ -48,6 +51,7 @@ function showInfo(data, tabletop) {
 		}
 	});
 
+
 }
 
 window.addEventListener('DOMContentLoaded', init)
@@ -59,5 +63,5 @@ window.addEventListener('DOMContentLoaded', init)
 // if the header hits the top of the window it should stick
 
 /* ------------------------------ *
- * Checkbox filtration
+ * Checkbox filtration template
  * ------------------------------ */

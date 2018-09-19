@@ -29,17 +29,33 @@ function showInfo(data, tabletop) {
 	var awardList = new List('award-wrapper', options, data);
 
 	
-	/* 
+	/* ---------------------------------------------------------------------- *
+	 *
 	 * FILTER CHECK BOXES
-	 */
+	 *
+	 * ---------------------------------------------------------------------- */
+
+	/* Checkbox Filter Function
+	--------------------------------------------------------------------------*/
+
+
+	/* Country
+	--------------------------------------------------------------------------*/
+
+	/* Scholarship Criteria (e.g. internal/external funding)
+	--------------------------------------------------------------------------*/
+	
+	/* Citizenship
+	--------------------------------------------------------------------------*/
+
 	let boxUS = document.getElementById('eligibility-citizenship-us');
 	boxUS.addEventListener('click',function(){
 		if (boxUS.checked) {
 
 			awardList.filter( function(item) {
-				if ((item.values().citizenship.toLowerCase().search("us") != -1) ||
-					(item.values().citizenship.toLowerCase().search("united states") != -1) &&
-				    (item.values().citizenship.toLowerCase().search("non-us") == -1)) {
+				if ((item.values()['citizenship'].toLowerCase().search("us") != -1) ||
+					(item.values()['citizenship'].toLowerCase().search("united states") != -1) &&
+				    (item.values()['citizenship'].toLowerCase().search("non-us") == -1)) {
 					return true;
 				} else {
 					return false;
@@ -51,6 +67,24 @@ function showInfo(data, tabletop) {
 		}
 	});
 
+	let boxNonUS = document.getElementById('eligibility-citizenship-nonus');
+	boxNonUS.addEventListener('click',function() {
+		if (boxNonUS.checked) {
+			awardList.filter( function(item) {
+				if (item.values().citizenship.toLowerCase().search("non-us") != -1 ||
+					item.values().citizenship.toLowerCase().search("us") == -1) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+		} else {
+			awardList.filter();
+		}
+	});
+
+	/* Grade/class Level
+	--------------------------------------------------------------------------*/
 
 }
 

@@ -38,6 +38,25 @@ function showInfo(data, tabletop) {
 	/* Checkbox Filter Function
 	--------------------------------------------------------------------------*/
 
+	// function comparison
+	function filter_checkbox(elementName,targetField,includeTerms) {
+		let e = document.getElementById(elementName);
+		e.addEventListener('click',function(){
+			if (e.checked) {
+				// if targetField has includeTerms but not excludeTerms...
+				let test_targetField = "this is a sentence";
+				let result = function() {
+					includeTerms.forEach( e => {
+						console.log(e);
+					});
+				}; //ok this just returns the function but MAYBE THIS IS A KEY
+
+				console.log("---" + result);
+			}
+		});
+	}
+
+	filter_checkbox('country-brunei','',['this','not']);
 
 	/* Country
 	--------------------------------------------------------------------------*/

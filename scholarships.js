@@ -44,8 +44,13 @@ function showInfo(data, tabletop) {
 		e.addEventListener('click',function(){
 			if (e.checked) {
 
+				// converts term lists to arrays if they aren't, for looping purposes
+				// really only works if there is a single term
 				if (!Array.isArray(includeTerms)) {
 					includeTerms = new Array(includeTerms);
+				}
+				if (!Array.isArray(excludeTerms)) {
+					excludeTerms = new Array(excludeTerms);
 				}
 
 				awardList.filter( function(row) {
@@ -73,14 +78,26 @@ function showInfo(data, tabletop) {
 						}
 					});
 
-					// if it has at least one includTerm and none of the exclude
-					//   terms, then filter the rows. Otherwise do nothing.
+					// if it has at least one includeTerm and none of the exclude
+					//   terms, then filter the rows.
+
+					// cases to filter by inclusion:
+					// - if it has at least one include term and no exclude terms
+
+					// cases to filter by exclusion:
+					// - if it has none of the exclude terms
+					// -
+
+					// console.log(row.values().name);
+					// console.log('include? : ' + hasIncludeTerm);
+					// console.log('exclude? : ' + hasExcludeTerm);
+
 					if (hasIncludeTerm && !hasExcludeTerm) {
 						return true;
 					} else {
 						return false;
 					}
-						
+
 				});
 
 			} else { // return to full list if box unchecked
@@ -110,32 +127,18 @@ function showInfo(data, tabletop) {
 	/* Filter by Citizenship
 	--------------------------------------------------------------------------*/
 
-	let boxUS = document.getElementById('eligibility-citizenship-us');
-	boxUS.addEventListener('click',function(){
-		if (boxUS.checked) {
+	filter_by_checkbox('eligibility-citizenship-us','citizenship',
+					   ['us','united states'],['non-us']);
 
-			test = 'citizenship';
-			awardList.filter( function(item) {
-				if ((item.values()[test].toLowerCase().search("us") != -1) ||
-					(item.values()['citizenship'].toLowerCase().search("united states") != -1) &&
-				    (item.values()['citizenship'].toLowerCase().search("non-us") == -1)) {
-					return true;
-				} else {
-					return false;
-				}
-			});
-			
-		} else {
-			awardList.filter();
-		}
-	});
 
+	// can't use filter_by_checkbox() because this is kind of a special case. UGH
 	let boxNonUS = document.getElementById('eligibility-citizenship-nonus');
 	boxNonUS.addEventListener('click',function() {
 		if (boxNonUS.checked) {
 			awardList.filter( function(item) {
-				if (item.values().citizenship.toLowerCase().search("non-us") != -1 ||
-					item.values().citizenship.toLowerCase().search("us") == -1) {
+				if (item.values().citizenship.toLowerCase().search("non-us") != -1 &&
+					item.values().citizenship.toLowerCase().search("us") == -1 &&
+					item.values().citizenship.toLowerCase().search("united states") == -1) {
 					return true;
 				} else {
 					return false;

@@ -39,40 +39,84 @@ function showInfo(data, tabletop) {
 	--------------------------------------------------------------------------*/
 
 	// function comparison
-	function filter_checkbox(elementName,targetField,includeTerms) {
+	function filter_by_checkbox(elementName,targetField='',includeTerms=[],excludeTerms=[]) {
 		let e = document.getElementById(elementName);
 		e.addEventListener('click',function(){
 			if (e.checked) {
-				// if targetField has includeTerms but not excludeTerms...
-				let test_targetField = "this is a sentence";
-				let result = function() {
-					includeTerms.forEach( e => {
-						console.log(e);
-					});
-				}; //ok this just returns the function but MAYBE THIS IS A KEY
 
-				console.log("---" + result);
+				if (!Array.isArray(includeTerms)) {
+					includeTerms = new Array(includeTerms);
+				}
+
+				awardList.filter( function(row) {
+
+					// test if any of the required includeTerms is found in the phrase
+					hasIncludeTerm = false;
+					
+					includeTerms.forEach( e => {
+						if (row.values()[targetField].toLowerCase().includes(e)) {
+							hasIncludeTerm = true;
+						}
+					});
+
+					// test if targetField has any excludeTerms
+					//   if it has excludeTerms, the field does not match the query
+					//   example: we want a query for US citizenship to match with
+					//       the term "US" but not with the term "non-US", of which
+					//       "US" is a substring. So we need to explicitly exclude
+					//       "non-US".
+					hasExcludeTerm = false;
+					
+					excludeTerms.forEach( e => {
+						if (row.values()[targetField].toLowerCase().includes(e)) {
+							hasExcludeTerm = true;
+						}
+					});
+
+					// if it has at least one includTerm and none of the exclude
+					//   terms, then filter the rows. Otherwise do nothing.
+					if (hasIncludeTerm && !hasExcludeTerm) {
+						return true;
+					} else {
+						return false;
+					}
+						
+				});
+
+			} else { // return to full list if box unchecked
+				awardList.filter();
 			}
 		});
 	}
 
-	filter_checkbox('country-brunei','',['this','not']);
-
-	/* Country
+	/* Filter by Country
 	--------------------------------------------------------------------------*/
 
-	/* Scholarship Criteria (e.g. internal/external funding)
+	seaCountries = [['brunei','country-brunei'],['cambodia','country-cambodia'],
+	['indonesia','country-indonesia'],['laos','country-laos'],
+	['malaysia','country-malaysia'],['myanmar','country-myanmar'],
+	['philippines','country-philippines'],['singapore','country-singapore'],
+	['thailand','country-thailand'],['timor-leste','country-timor-leste'],
+	['vietnam','country-vietnam']];
+
+	seaCountries.forEach( function(country) {
+		// parameters: elementName, targetField, includeTerms (nothing to exclude)
+		filter_by_checkbox(country[1],'seacountryfocus',country[0]);
+	});
+
+	/* Filter by Scholarship Criteria (e.g. internal/external funding)
 	--------------------------------------------------------------------------*/
 	
-	/* Citizenship
+	/* Filter by Citizenship
 	--------------------------------------------------------------------------*/
 
 	let boxUS = document.getElementById('eligibility-citizenship-us');
 	boxUS.addEventListener('click',function(){
 		if (boxUS.checked) {
 
+			test = 'citizenship';
 			awardList.filter( function(item) {
-				if ((item.values()['citizenship'].toLowerCase().search("us") != -1) ||
+				if ((item.values()[test].toLowerCase().search("us") != -1) ||
 					(item.values()['citizenship'].toLowerCase().search("united states") != -1) &&
 				    (item.values()['citizenship'].toLowerCase().search("non-us") == -1)) {
 					return true;

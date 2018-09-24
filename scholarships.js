@@ -78,19 +78,12 @@ function showInfo(data, tabletop) {
 						}
 					});
 
-					// if it has at least one includeTerm and none of the exclude
-					//   terms, then filter the rows.
+					/* EDGE CASE TO BE FIXED:
+						If there are both include terms and exclude terms, and
+						the exclude term is a subset or the include terms or
+						vice-versa, then... what do?
+					*/
 
-					// cases to filter by inclusion:
-					// - if it has at least one include term and no exclude terms
-
-					// cases to filter by exclusion:
-					// - if it has none of the exclude terms
-					// -
-
-					// console.log(row.values().name);
-					// console.log('include? : ' + hasIncludeTerm);
-					// console.log('exclude? : ' + hasExcludeTerm);
 
 					if (hasIncludeTerm && !hasExcludeTerm) {
 						return true;
@@ -123,6 +116,9 @@ function showInfo(data, tabletop) {
 
 	/* Filter by Scholarship Criteria (e.g. internal/external funding)
 	--------------------------------------------------------------------------*/
+
+	filter_by_checkbox('fund-source-internal','fundsource',['internal']);
+	filter_by_checkbox('fund-source-external','fundsource',['external']);
 	
 	/* Filter by Citizenship
 	--------------------------------------------------------------------------*/
@@ -132,6 +128,7 @@ function showInfo(data, tabletop) {
 
 
 	// can't use filter_by_checkbox() because this is kind of a special case. UGH
+	// also this filter doesn't really work at the moment.
 	let boxNonUS = document.getElementById('eligibility-citizenship-nonus');
 	boxNonUS.addEventListener('click',function() {
 		if (boxNonUS.checked) {
@@ -151,6 +148,13 @@ function showInfo(data, tabletop) {
 
 	/* Grade/class Level
 	--------------------------------------------------------------------------*/
+
+	filter_by_checkbox('eligibility-level-undergraduate','gradelevel',['undergrad','undergraduate']);
+	// the graduate one is going to be an issue: exclude terms are a superset of the include terms
+	// but sometimes the exclude terms don't disqualify a row, e.g. if eligibility is open to
+	// both undergrad and grad levels.
+	filter_by_checkbox('eligibility-level-graduate','gradelevel',['grad','graduate']);
+	filter_by_checkbox('eligibility-level-professional','gradelevel',['professional']);
 
 }
 

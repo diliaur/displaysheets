@@ -6,6 +6,7 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 
 ## To Do
 
+- [ ] Add column for deadlines
 - [ ] Add description to page & terminology key as in old/index.html
 - [ ] To save space, make the description & key toggle-able
 - [ ] Sticky first column (award names) (maybe)
@@ -20,6 +21,8 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 	- integrated Tabletop with Listjs to generate a table rather than writing custom templating. Fixes issue `2018/09/05` below. Filtering and sorting now work. This is currently being constructed in scratch.html/js/css (files to be consolidated later)
 
 ## Issues & Notes
+
+- ISSUE _2018/09/24_ Computing intersections of criteria terms by function `filter_by_checkbox()`. This function works by filtering by lists of strings to include or exclude. Works perfectly if the include criteria and the exclude criteria (if any) do not have matching substrings. However, there are some edge cases where we might want to filter by exclusion only (which doesn't work) OR where we want to exclude terms in some cases but not in others (e.g.: finding all 'graduate' awards but including term 'graduate' which also necessarily includes 'undergraduate'. However, sometimes the award matches both 'graduate' and 'undergraduate' and thus should not be excluded on the base of having the term 'undergraduate', because it's an award both grads and undergrads can apply for.)
 
 - **RESOLVED** _2018/09/05_ Tried List.js with the JS-generated list of scholarship awards and it broke the page (lol). Could be because the awards are inserted into the DOM via JS & List.js refreshes the DOM somehow, but the scholarship list generator isn't called again. There's a way to construct a list in List.js so maybe this is the way to go, rather than the custom template currently used.
 

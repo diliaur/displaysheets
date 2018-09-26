@@ -133,9 +133,8 @@ function showInfo(data, tabletop) {
 	boxNonUS.addEventListener('click',function() {
 		if (boxNonUS.checked) {
 			awardList.filter( function(item) {
-				if (item.values().citizenship.toLowerCase().search("non-us") != -1 &&
-					item.values().citizenship.toLowerCase().search("us") == -1 &&
-					item.values().citizenship.toLowerCase().search("united states") == -1) {
+				let re = /([^us])/gi;
+				if (item.values().citizenship.match(re)) {
 					return true;
 				} else {
 					return false;
@@ -149,11 +148,31 @@ function showInfo(data, tabletop) {
 	/* Grade/class Level
 	--------------------------------------------------------------------------*/
 
+	// * undergrad awards
 	filter_by_checkbox('eligibility-level-undergraduate','gradelevel',['undergrad','undergraduate']);
-	// the graduate one is going to be an issue: exclude terms are a superset of the include terms
-	// but sometimes the exclude terms don't disqualify a row, e.g. if eligibility is open to
-	// both undergrad and grad levels.
-	filter_by_checkbox('eligibility-level-graduate','gradelevel',['grad','graduate']);
+
+	// * grad awards
+	//   those which contain the term 'grad/graduate' but not
+	//   as part of the word 'undergrad/undergraduate'. This one is tricky because its
+	//   include term is a subset of another word that may exist in the same field.
+	//   SO WE USE REGULAR EXPRESSIONS
+	let boxGraduate = document.getElementById('eligibility-level-graduate');
+	boxGraduate.addEventListener('click',function(){
+		if (boxGraduate.checked) { // filter
+			awardList.filter( function(item) {
+				let re = /(\bgraduate)/gi; // regular expression matching only 'graduate' (case-insensitive flag 'i')
+				if (item.values().gradelevel.match(re)) {
+					return true;
+				} else {
+					return false;
+				}
+			});
+		} else { // reset
+			awardList.filter();
+		}
+	})
+
+	// * professional awards
 	filter_by_checkbox('eligibility-level-professional','gradelevel',['professional']);
 
 }

@@ -7,7 +7,7 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 ## To Do
 
 - [ ] Add column for deadlines
-- [ ] To sav space, make the description & key toggle-able
+- [ ] To save space, make the description & key toggle-able
 - [ ] Sticky first column (award names) (maybe)
 - [ ] Make header row (and maybe search bar also) sticky
 - [ ] Add responsive sidebar to house checkbox filtration or other info

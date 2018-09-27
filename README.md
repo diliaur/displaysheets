@@ -7,8 +7,7 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 ## To Do
 
 - [ ] Add column for deadlines
-- [ ] Add description to page & terminology key as in old/index.html
-- [ ] To save space, make the description & key toggle-able
+- [ ] To sav space, make the description & key toggle-able
 - [ ] Sticky first column (award names) (maybe)
 - [ ] Make header row (and maybe search bar also) sticky
 - [ ] Add responsive sidebar to house checkbox filtration or other info
@@ -17,6 +16,7 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 	- _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if the API breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
 
 ## Done
+- [x] (2018-09-19) Add description to page & terminology key as in old/index.html
 - [x] (2018-09-10) Add filtration system on scholarship award metadata
 	- integrated Tabletop with Listjs to generate a table rather than writing custom templating. Fixes issue `2018/09/05` below. Filtering and sorting now work. This is currently being constructed in scratch.html/js/css (files to be consolidated later)
 

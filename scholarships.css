@@ -1,3 +1,6 @@
+div {
+	box-sizing:border-box;
+}
 body {
 	font-family: sans-serif;
 	font-size: 11pt;
@@ -55,12 +58,17 @@ input.search {
 #sidebar {
 	background-color:#60a9f3;
 	padding: 1em;
-	/*width: calc(25%-2em);
-	min-width: 150px;*/
+	position:sticky; /* extra holy crap */
+	position:-webkit-sticky;
+	top:0;
+	width:200px;
+	min-width:20%;
+	height:100vh; /* holy crap */
+	float: left;
 }
-/*#award-wrapper {
-	width: 75%;
-}*/
+#award-wrapper {
+	margin-left: 200px;
+}
 fieldset {
 	border: 1px solid white;
 }

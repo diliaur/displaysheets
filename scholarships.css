@@ -69,7 +69,7 @@ input.search {
 	height:100vh; /* holy crap */
 	float: left;
 }
-#award-wrapper { /* contains the awards list & search bar */
+#main-content { /* contains the awards list & search bar */
 	margin-left: calc(200px + 1em);
 }
 #page-description {

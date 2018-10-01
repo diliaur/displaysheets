@@ -1,5 +1,8 @@
 div {
-	box-sizing:border-box;
+	box-sizing: border-box;
+}
+#page-description {
+	box-sizing: border-box;
 }
 body {
 	font-family: sans-serif;
@@ -66,8 +69,11 @@ input.search {
 	height:100vh; /* holy crap */
 	float: left;
 }
-#award-wrapper {
-	margin-left: 200px;
+#award-wrapper { /* contains the awards list & search bar */
+	margin-left: calc(200px + 1em);
+}
+#page-description {
+	overflow:hidden; /* to counter header margin pushing parent (this) down */
 }
 fieldset {
 	border: 1px solid white;

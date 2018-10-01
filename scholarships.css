@@ -59,22 +59,31 @@ input.search {
 	float: left;
 }*/
 #sidebar {
-	background-color:#60a9f3;
+	background-color:#c74f3a;
 	padding: 1em;
 	position:sticky; /* extra holy crap */
 	position:-webkit-sticky;
-	top:0;
+	top:0px;
 	width:200px;
 	min-width:20%;
 	height:100vh; /* holy crap */
 	float: left;
+	overflow-y:scroll;
+	word-break: break-word;
 }
 #main-content { /* contains the awards list & search bar */
 	margin-left: calc(200px + 1em);
 }
-#page-description {
-	overflow:hidden; /* to counter header margin pushing parent (this) down */
+h1#page-title {
+	margin-top:0; /* to counter header margin pushing parent down */
+	padding-top:.67em;
 }
 fieldset {
 	border: 1px solid white;
+	margin-bottom:1em;
+}
+fieldset legend {
+	color: #FFF;
+	font-weight:bold;
+	text-transform: uppercase;
 }

@@ -59,7 +59,7 @@ input.search {
 	float: left;
 }*/
 #sidebar {
-	background-color:#c74f3a;
+	background-color:#d34e41;
 	padding: 1em;
 	position:sticky; /* extra holy crap */
 	position:-webkit-sticky;
@@ -86,4 +86,9 @@ fieldset legend {
 	color: #FFF;
 	font-weight:bold;
 	text-transform: uppercase;
+}
+label {
+	display:inline;
+}
+.s-collapse-toggle { /* link to toggle collapse of long descriptions */
 }

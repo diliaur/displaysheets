@@ -6,6 +6,7 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 
 ## To Do
 
+- [ ] Add case to handle multiple checkboxes in the same category(?) - might require some kind of global query tracker
 - [ ] Add column for deadlines
 - [ ] To save space, make the description & key toggle-able
 - [ ] Sticky first column (award names) (maybe)

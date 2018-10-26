@@ -170,7 +170,7 @@ function showInfo(data, tabletop) {
 		} else { // reset
 			awardList.filter();
 		}
-	})
+	});
 
 	// * professional awards
 	filter_by_checkbox('eligibility-level-professional','gradelevel',['professional']);
@@ -188,3 +188,50 @@ window.addEventListener('DOMContentLoaded', init)
 /* ------------------------------ *
  * Checkbox filtration template
  * ------------------------------ */
+
+/* ------------------------------ *
+ * Create a "collapsible" element
+ * ------------------------------ */
+
+// basically used to toggle descriptions in sidebar
+
+$(document).ready( function() { // jquery v
+	let toggle_items = document.getElementsByClassName('s-collapse-toggle');
+	
+	for (let i = 0; i < toggle_items.length; i++) { // add to all class members
+		toggle_items[i].addEventListener('click',function(){
+			if ( toggle_items[i].innerText.toLowerCase() == "see more" ) {
+				toggle_items[i].innerText = "See less";
+			} else if ( toggle_items[i].innerText.toLowerCase() == "see less" ) {
+				toggle_items[i].innerText = "See more";
+			}
+		});
+	}
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

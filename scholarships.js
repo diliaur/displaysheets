@@ -129,21 +129,21 @@ function showInfo(data, tabletop) {
 
 	// can't use filter_by_checkbox() because this is kind of a special case. UGH
 	// also this filter doesn't really work at the moment.
-	let boxNonUS = document.getElementById('eligibility-citizenship-nonus');
-	boxNonUS.addEventListener('click',function() {
-		if (boxNonUS.checked) {
-			awardList.filter( function(item) {
-				let re = /([^us])/gi;
-				if (item.values().citizenship.match(re)) {
-					return true;
-				} else {
-					return false;
-				}
-			});
-		} else {
-			awardList.filter();
-		}
-	});
+	// let boxNonUS = document.getElementById('eligibility-citizenship-nonus');
+	// boxNonUS.addEventListener('click',function() {
+	// 	if (boxNonUS.checked) {
+	// 		awardList.filter( function(item) {
+	// 			let re = /([^us])/gi;
+	// 			if (item.values().citizenship.match(re)) {
+	// 				return true;
+	// 			} else {
+	// 				return false;
+	// 			}
+	// 		});
+	// 	} else {
+	// 		awardList.filter();
+	// 	}
+	// });
 
 	/* Grade/class Level
 	--------------------------------------------------------------------------*/

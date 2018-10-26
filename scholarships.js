@@ -190,10 +190,10 @@ window.addEventListener('DOMContentLoaded', init)
  * ------------------------------ */
 
 /* ------------------------------ *
- * Create a "collapsible" element
+ * Target a "collapsible" element's control
  * ------------------------------ */
 
-// basically used to toggle descriptions in sidebar
+// toggles text between "See more" and "See less"
 
 $(document).ready( function() { // jquery v
 	let toggle_items = document.getElementsByClassName('s-collapse-toggle');

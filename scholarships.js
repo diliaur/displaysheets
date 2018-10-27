@@ -180,18 +180,38 @@ function showInfo(data, tabletop) {
 window.addEventListener('DOMContentLoaded', init)
 
 /* ------------------------------ *
- * Sticky header
+ * Sticky table header
  * ------------------------------ */
 
-// if the header hits the top of the window it should stick
+// if the table header hits the top of the window it should stick
+
+$(document).ready( function() { //jquery
+
+	// grab all th
+	let sticky_header = document.getElementsByTagName("th");
+	// find height of scroll bar so it can push down the sticky header
+	let buffer_height = document.getElementById("search-wrapper").clientHeight;
+
+	// INLINE (:'() styles to add to each th
+	let styles = {
+		"position":"sticky",
+		"top": buffer_height
+	};
+
+	// add styles to each th
+	for (let i = 0; i < sticky_header.length; i++){
+		$(sticky_header[i]).css(styles);
+	}	
+});
+
 
 /* ------------------------------ *
  * Checkbox filtration template
  * ------------------------------ */
 
-/* ------------------------------ *
+/* ---------------------------------------- *
  * Target a "collapsible" element's control
- * ------------------------------ */
+ * ---------------------------------------- */
 
 // toggles text between "See more" and "See less"
 

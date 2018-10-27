@@ -84,7 +84,7 @@
 
 		<div id="award-wrapper" class="content-pane">
 			<!-- filter buttons and search MUST be inside the wrapper, along with the list to be sorted -->
-			<div class="search-wrapper">
+			<div id="search-wrapper" class="sticky">
 				<label>Search by keyword:
 					<input class="search" placeholder="search by keyword (example: 'language')"><br/>
 				</label>
@@ -93,7 +93,7 @@
 
 			<table class="awards-table">
 				<thead>
-					<tr>
+					<tr id="awards-table-header-row">
 						<th class="sort" data-sort="name">Name</th>
 						<th>Website</th>
 						<th class="sort" data-sort="fundsource">Funding Source</th>

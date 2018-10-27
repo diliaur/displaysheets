@@ -22,6 +22,8 @@ table th, table td {
 }
 table th {
 	background-color: orange;
+/*	position:sticky;
+	top:0;*/
 }
 table tr:nth-child(odd) td:first-child {
 	/*background-color: #ffed93;*/
@@ -34,15 +36,16 @@ table tr { /* separator for ea award */
 	border-bottom:1px solid orange;
 }
 .sticky {
-	position: absolute;
-	top:0; left:0;
+	position: sticky;
+	top:0; /* top is important */
 }
-.search-wrapper {
+#search-wrapper {
 	/* width, padding, and box-sizing cushion the text input */
 	width: 100%;
 	padding: 1em;
 	box-sizing: border-box;
 	margin-bottom: .5em;
+	background-color:#fff; /* for when it scrolls */
 }
 .search-help {
 	font-style: italic;

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Testing some sidebar stuff | LOL</title>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+</head>
+<body>
+
+	<div class="ui left visible sidebar">
+		<ol>
+			<li>Hey</li>
+			<li>Look</li>
+			<li>Some</li>
+			<li>Bullets</li>
+		</ol>
+		test test test test test test test test 
+	</div>
+	<div class="pusher">
+		<!-- <span id="s-menu-toggle" class="ui purple button"></span> -->
+		<i id="s-menu-toggle" class="large purple bars icon"></i>
+		content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent content content contentcontent 
+	</div>
+
+	<script>
+		$('.ui.left.sidebar').sidebar({
+			dimPage:false,
+			closable:false // so if click within pusher, sidebar doesn't close
+		});
+
+		// only toggle the sidebar with this element
+		document.getElementById('s-menu-toggle').addEventListener('click',function(){
+			$('.ui.left.sidebar').sidebar('toggle');
+		});
+
+	</script> 
+</body>
+</html>

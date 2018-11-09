@@ -1,4 +1,4 @@
-# Display Sheets
+# Scholarships
 
 ## Basic About
 
@@ -29,8 +29,10 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 
 - **RESOLVED** _2018/09/05_ Tried List.js with the JS-generated list of scholarship awards and it broke the page (lol). Could be because the awards are inserted into the DOM via JS & List.js refreshes the DOM somehow, but the scholarship list generator isn't called again. There's a way to construct a list in List.js so maybe this is the way to go, rather than the custom template currently used.
 
-## Libraries Explored or Used
+## Libraries & Frameworks
 
 - [Tabletop.js](https://github.com/jsoma/tabletop) - read in google sheet data
 - [List JS](listjs.com) - filtration, sorting, and template output
 - [jQuery](https://jquery.com/)
+- [BootStrap 4](https://getbootstrap.com/) - _may discontinue use_
+- [Semantic UI](https://semantic-ui.com/) - responsive, collapsible sidebar

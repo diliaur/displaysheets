@@ -19,42 +19,33 @@
 			<div class="item"><i id="s-menu-toggle" class="large bars icon"></i></div>
 			<div class="header item">SEA Scholarships</div>
 		</div>
-		<div class="content">
-			<table>
+		<div id="award-wrapper">
+			<table class="awards-table">
 				<thead>
-					<th>This</th>
-					<th>Table</th>
-					<th>has</th>
-					<th>a</th>
-					<th>lot</th>
-					<th>of</th>
-					<th>cells</th>
-					<th>but</th>
-					<th>will</th>
-					<th>it</th>
-					<th>be</th>
-					<th>long</th>
-					<th>enough?</th>
+					<tr id="awards-table-header-row">
+						<th class="sort" data-sort="name">Name</th>
+						<th>Website</th>
+						<th class="sort" data-sort="fundsource">Funding Source</th>
+						<th class="sort" data-sort="fundingtype">Funding Type</th>
+						<th class="sort" data-sort="length">Length</th>
+						<th>Place of Study</th>
+						<th>SEA Country Focus</th>
+						<th>Discipline Focus</th>
+						<th class="sort" data-sort="gradelevel">Class Level</th>
+						<th class="sort" data-sort="citizenship">Citizenship Requirement</th>
+						<th>Contact Name</th>
+						<th>Contact Email</th>
+					</tr>
 				</thead>
-				<tbody>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
-					<td>hi</td>
+				<tbody class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
+				<!-- This is where the data will go.
+				The structure is populated by List.js & Tabletop -->
 				</tbody>
 			</table>
 		</div>
 	</div>
 
+	<!-- sidebar properties & toggle button -->
 	<script>
 		$('.ui.left.sidebar').sidebar({
 			dimPage:false,
@@ -65,7 +56,12 @@
 		document.getElementById('s-menu-toggle').addEventListener('click',function(){
 			$('.ui.left.sidebar').sidebar('toggle');
 		});
-
-	</script> 
+	</script>
+	<!-- Tabletop -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+	<!-- List.js for sort and filter -->
+	<script src="list.min.js"></script>
+	<!-- custom -->
+	<script src="scholarships.js"></script>
 </body>
 </html>

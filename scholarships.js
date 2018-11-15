@@ -1,6 +1,6 @@
 // console.log("connected!");
 
-/* 
+/*
 * processing data from google sheet via Tabletop
 */
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/13JTS8DX4z5BZ6bTwgkmssxcERodv6Tl5OKaj_EJ2qIA/edit?usp=sharing';
@@ -8,7 +8,7 @@ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/13JTS8DX4z5BZ
 function init() {
 	Tabletop.init( { key: publicSpreadsheetUrl,
 	                 callback: showInfo,
-	                 simpleSheet: true, 
+	                 simpleSheet: true,
 	             	 prettyColumnNames: false} )
 }
 
@@ -20,7 +20,7 @@ function showInfo(data, tabletop) {
 	/* do the list.js stuff ... in here I guess */
 
 	var options = {
-		valueNames: [ 'name', {name: 'url', attr: 'href'}, 'fundsource', 'fundingtype', 'length', 
+		valueNames: [ 'name', {name: 'url', attr: 'href'}, 'fundsource', 'fundingtype', 'length',
 					  'placeofstudy', 'seacountryfocus', 'disciplinefocus',
 					  'gradelevel', 'citizenship', 'contactname', 'contactemail'],
 		item: '<tr><td class="name">Name</td><td><a class="url" target="_blank">More Info</a></td><td class="fundsource">Funding Source</td><td class="fundingtype">Funding Type</td><td class="length">Length</td><td class="placeofstudy">Place of Study</td><td class="seacountryfocus">SEA Country Focus</td><td class="disciplinefocus">Discipline Focus</td><td class="gradelevel">Class Level</td><td class="citizenship">Citizenship Requirement</td><td class="contactname">Contact Name</td><td class="contactemail">Contact Email</td></tr>'
@@ -28,7 +28,7 @@ function showInfo(data, tabletop) {
 
 	var awardList = new List('award-wrapper', options, data);
 
-	
+
 	/* ---------------------------------------------------------------------- *
 	 *
 	 * FILTER CHECK BOXES
@@ -57,7 +57,7 @@ function showInfo(data, tabletop) {
 
 					// test if any of the required includeTerms is found in the phrase
 					hasIncludeTerm = false;
-					
+
 					includeTerms.forEach( e => {
 						if (row.values()[targetField].toLowerCase().includes(e)) {
 							hasIncludeTerm = true;
@@ -71,7 +71,7 @@ function showInfo(data, tabletop) {
 					//       "US" is a substring. So we need to explicitly exclude
 					//       "non-US".
 					hasExcludeTerm = false;
-					
+
 					excludeTerms.forEach( e => {
 						if (row.values()[targetField].toLowerCase().includes(e)) {
 							hasExcludeTerm = true;
@@ -119,7 +119,7 @@ function showInfo(data, tabletop) {
 
 	filter_by_checkbox('fund-source-internal','fundsource',['internal']);
 	filter_by_checkbox('fund-source-external','fundsource',['external']);
-	
+
 	/* Filter by Citizenship
 	--------------------------------------------------------------------------*/
 
@@ -188,20 +188,20 @@ window.addEventListener('DOMContentLoaded', init)
 $(document).ready( function() { //jquery
 
 	// grab all th
-	let sticky_header = document.getElementsByTagName("th");
-	// find height of scroll bar so it can push down the sticky header
-	let buffer_height = document.getElementById("search-wrapper").clientHeight;
-
-	// INLINE (:'() styles to add to each th
-	let styles = {
-		"position":"sticky",
-		"top": buffer_height
-	};
-
-	// add styles to each th
-	for (let i = 0; i < sticky_header.length; i++){
-		$(sticky_header[i]).css(styles);
-	}	
+	// let sticky_header = document.getElementsByTagName("th");
+	// // find height of scroll bar so it can push down the sticky header
+	// let buffer_height = document.getElementById("search-wrapper").clientHeight;
+	//
+	// // INLINE (:'() styles to add to each th
+	// let styles = {
+	// 	"position":"sticky",
+	// 	"top": buffer_height
+	// };
+	//
+	// // add styles to each th
+	// for (let i = 0; i < sticky_header.length; i++){
+	// 	$(sticky_header[i]).css(styles);
+	// }
 });
 
 
@@ -217,7 +217,7 @@ $(document).ready( function() { //jquery
 
 $(document).ready( function() { // jquery v
 	let toggle_items = document.getElementsByClassName('s-collapse-toggle');
-	
+
 	for (let i = 0; i < toggle_items.length; i++) { // add to all class members
 		toggle_items[i].addEventListener('click',function(){
 			if ( toggle_items[i].innerText.toLowerCase() == "see more" ) {
@@ -228,30 +228,3 @@ $(document).ready( function() { // jquery v
 		});
 	}
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

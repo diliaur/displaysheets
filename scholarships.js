@@ -26,7 +26,7 @@ function showInfo(data, tabletop) {
 		item: '<tr><td class="name">Name</td><td><a class="url" target="_blank">More Info</a></td><td class="fundsource">Funding Source</td><td class="fundingtype">Funding Type</td><td class="length">Length</td><td class="placeofstudy">Place of Study</td><td class="seacountryfocus">SEA Country Focus</td><td class="disciplinefocus">Discipline Focus</td><td class="gradelevel">Class Level</td><td class="citizenship">Citizenship Requirement</td><td class="contactname">Contact Name</td><td class="contactemail">Contact Email</td></tr>'
 	};
 
-	var awardList = new List('award-wrapper', options, data);
+	var awardList = new List('list-wrapper', options, data);
 
 
 	/* ---------------------------------------------------------------------- *

@@ -10,13 +10,13 @@
 </head>
 <body>
 
-	<div class="ui left visible sidebar">
+	<div class="ui left sidebar">
 		Filter
 		Key
 	</div>
 	<div class="pusher">
 		<div class="ui top attached menu inverted">
-			<div class="item"><i id="s-menu-toggle" class="large bars icon"></i></div>
+			<div class="item" id="s-menu-toggle"><i class="large bars icon"></i> Filter</div>
 			<div class="header item">Southeast Asia Related Scholarships</div>
 		</div>
 		<div id="search-wrapper" class="">
@@ -26,7 +26,7 @@
 			<span class="search-help">Results will be narrowed by matching to search terms.</span>
 		</div>
 		<div id="award-wrapper" class="ui basic segment">
-			<table id="awards-table">
+			<table id="awards-table" class="ui unstackable celled table">
 				<thead>
 					<tr id="awards-table-header-row">
 						<th class="sort" data-sort="name">Name</th>
@@ -54,8 +54,8 @@
 	<!-- sidebar properties & toggle button -->
 	<script>
 		$('.ui.left.sidebar').sidebar({
-			dimPage:false,
-			closable:false // so if click within pusher, sidebar doesn't close
+			dimPage:true,
+			closable:true // so if click within pusher, sidebar doesn't close
 		});
 
 		// only toggle the sidebar with this element

@@ -3,15 +3,33 @@
 	color:white;
 	padding: 1em;
 }
-.content {
-	flex-wrap:nowrap;
-}
-table th {
-	width: 100px;
-}
-.pushable {
-}
 #award-wrapper {
 	overflow-x: scroll;
 	white-space: nowrap; /* this needs to be used in conjunction with overflow */
+}
+#awards-table td {
+	white-space: normal; /* this collapses content in cells */
+}
+
+/*
+ * Search bars
+ */
+#search-wrapper {
+	/* width, padding, and box-sizing cushion the text input */
+	width: 100%;
+	padding: 1em;
+	box-sizing: border-box;
+	background-color:#fff; /* for when it scrolls */
+}
+.search-help {
+	font-style: italic;
+	color: #888;
+	/* font-size: 1em; */
+}
+input.search {
+	font-size: 1.2em;
+	padding: .25em;
+	margin:.5em 0 .25em;
+	width: 100%;
+	box-sizing: border-box;
 }

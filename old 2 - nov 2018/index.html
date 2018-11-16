@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Southeast Asia Related Scholarships | UH CSEAS</title><!-- try different html/js things without messing up main files -->
+	<!-- <link rel="stylesheet" type="text/css" href="scholarships.css"> -->
+	<!-- if keep bootstrap, add it to included files instead of linking -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div class="content-wrapper">
+	<div id="sidebar" class="content-pane">
+		<p class="blurb">
+			Scholarships applicable to the study of Southeast Asia.
+		</p>
+
+		<h2>Filter Results</h2>
+
+		<form>
+			<fieldset>
+				<legend>Country</legend>
+				<label for="country-brunei"><input type="checkbox" id="country-brunei" value="brunei"> Brunei</label>
+				<label for="country-cambodia"><input type="checkbox" id="country-cambodia" value="cambodia"> Cambodia</label>
+				<label for="country-indonesia"><input type="checkbox" id="country-indonesia" value="indonesia"> Indonesia</label>
+				<label for="country-laos"><input type="checkbox" id="country-laos" value="laos"> Laos</label>
+				<label for="country-malaysia"><input type="checkbox" id="country-malaysia" value="malaysia"> Malaysia</label>
+				<label for="country-myanmar"><input type="checkbox" id="country-myanmar" value="myanmar"> Myanmar</label>
+				<label for="country-philippines"><input type="checkbox" id="country-philippines" value="philippines"> Philippines</label>
+				<label for="country-singapore"><input type="checkbox" id="country-singapore" value="singapore"> Singapore</label>
+				<label for="country-thailand"><input type="checkbox" id="country-thailand" value="thailand"> Thailand</label>
+				<label for="country-timor-leste"><input type="checkbox" id="country-timor-leste" value="timor-leste"> Timor-Leste</label>
+				<label for="country-vietnam"><input type="checkbox" id="country-vietnam" value="vietnam"> Vietnam</label>
+			</fieldset>
+			<fieldset>
+				<legend>Fund Source</legend>
+				<label for="fund-source-internal"><input type="checkbox" id="fund-source-internal" value="fund-source-internal"> Internal (UH Mānoa funding)</label>
+				<label for="fund-source-external"><input type="checkbox" id="fund-source-external" value="fund-source-external"> External (Non-UH Mānoa)</label>
+			</fieldset>
+			<fieldset>
+				<legend>Citizenship</legend>
+				<label for="eligibility-citizenship-us"><input type="checkbox" id="eligibility-citizenship-us" value="elibility-citizenship-us"> United States</label>
+				<!-- <label for="elibility-citizenship-nonus"><input type="checkbox" id="eligibility-citizenship-nonus" value="elibility-citizenship-nonus"> non-US Citizen</label>
+				<label for="elibility-citizenship-any"><input type="checkbox" id="eligibility-citizenship-any" value="elibility-citizenship-any"> Any/no restriction</label> -->
+			</fieldset>
+			<fieldset>
+				<legend>Class Level</legend>
+				<label for="eligibility-level-undergraduate"><input type="checkbox" id="eligibility-level-undergraduate" value="eligibility-level-undergraduate"> Undergraduate</label>
+				<label for="eligibility-level-graduate"><input type="checkbox" id="eligibility-level-graduate" value="eligibility-level-graduate"> Graduate</label>
+				<label for="eligibility-level-professional"><input type="checkbox" id="eligibility-level-professional" value="eligibility-level-professional"> Professional</label>
+			</fieldset>
+		</form>
+
+		<h2>About this Resource</h2>
+		<a href="#collapse-about" class="s-collapse-toggle" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-about">See more</a>
+		<div class="collapse" id="collapse-about">
+			<p>
+			This is a list of scholarships which may be applicable or related to study in or of Southeast Asia. We try to keep it up to date, but due to staffing constraints, some things may get past us. Please alert us of any broken links or other issues at <a href="mailto:cseasweb@hawaii.edu">cseasweb@hawaii.edu</a>. Because this is a curated list (these awards, unless otherwise stated, are not administered by CSEAS), please see the contact point or website for more information on specific awards.
+			</p>
+			<p>
+				You can also examine the spreadsheet itself if you prefer a tabular data format.
+			</p>
+		</div>
+
+		<h2>Key</h2>
+		<a href="#collapse-key" class="s-collapse-toggle" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapse-key">See more</a>
+		<div class="collapse" id="collapse-key">
+			This key defines some terminology used in the scholarship descriptions.
+			<ul>
+				<li><b>Fund source</b>: internal/external - whether the source is UH Mānoa or an external entity.</li>
+				<li><b>Length</b>: short term/long term/n/a - period of time of the award if stated. Time periods mostly apply to workshop and professional devlopment type awards</li>
+				<li><b>Grade level</b>: undergraduate/graduate/faculty/professional</li>
+				<li><b>Place of Study</b> - country or countries where you will be able to apply the award</li>
+				<li><b>SEA Country Focus</b> - some awards are specific to a certain country or countries in ASEAN</li>
+				<li><b>Discipline Focus</b> - which fields/disciplines are covered by the award</li>
+				<li><b>Citizenship</b> - citizenship requirement of the applicant</li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="main-content">
+
+		<h1 id="page-title">Southeast Asia Related Scholarships</h1>
+
+		<div id="award-wrapper" class="content-pane">
+			<!-- filter buttons and search MUST be inside the wrapper, along with the list to be sorted -->
+			<div id="search-wrapper" class="sticky">
+				<label>Search by keyword:
+					<input class="search" placeholder="search by keyword (example: 'language')"><br/>
+				</label>
+				<span class="search-help">Results will be narrowed by matching to search terms.</span>
+			</div>
+
+			<table class="awards-table">
+				<thead>
+					<tr id="awards-table-header-row">
+						<th class="sort" data-sort="name">Name</th>
+						<th>Website</th>
+						<th class="sort" data-sort="fundsource">Funding Source</th>
+						<th class="sort" data-sort="fundingtype">Funding Type</th>
+						<th class="sort" data-sort="length">Length</th>
+						<th>Place of Study</th>
+						<th>SEA Country Focus</th>
+						<th>Discipline Focus</th>
+						<th class="sort" data-sort="gradelevel">Class Level</th>
+						<th class="sort" data-sort="citizenship">Citizenship Requirement</th>
+						<th>Contact Name</th>
+						<th>Contact Email</th>
+					</tr>
+				</thead>
+				<tbody class="list"><!-- class="list" is CRITICAL for list.js to recognize it. underlying structure is not as imp -->
+				<!-- This is where the data will go.
+				The structure is populated by List.js & Tabletop -->
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+<!-- import javascripts -->
+<!-- jQuery -->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+<!-- popperjs (for Bootstrap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<!-- bootstrap 4 -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!-- Tabletop -->
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<!-- List.js for sort and filter -->
+<script src="list.min.js"></script>
+<!-- custom -->
+<script src="scholarships.js"></script>
+</body>
+</html>

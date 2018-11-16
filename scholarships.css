@@ -2,6 +2,7 @@
 	background-color:#ec4838;
 	color:white;
 	padding: 1em;
+	word-break: break-word;
 }
 #award-wrapper {
 	overflow-x: scroll;

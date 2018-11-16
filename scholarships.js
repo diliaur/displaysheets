@@ -185,7 +185,7 @@ window.addEventListener('DOMContentLoaded', init)
 
 // if the table header hits the top of the window it should stick
 
-$(document).ready( function() { //jquery
+// $(document).ready( function() { //jquery
 
 	// grab all th
 	// let sticky_header = document.getElementsByTagName("th");
@@ -202,7 +202,7 @@ $(document).ready( function() { //jquery
 	// for (let i = 0; i < sticky_header.length; i++){
 	// 	$(sticky_header[i]).css(styles);
 	// }
-});
+// });
 
 
 /* ------------------------------ *
@@ -215,16 +215,16 @@ $(document).ready( function() { //jquery
 
 // toggles text between "See more" and "See less"
 
-$(document).ready( function() { // jquery v
-	let toggle_items = document.getElementsByClassName('s-collapse-toggle');
-
-	for (let i = 0; i < toggle_items.length; i++) { // add to all class members
-		toggle_items[i].addEventListener('click',function(){
-			if ( toggle_items[i].innerText.toLowerCase() == "see more" ) {
-				toggle_items[i].innerText = "See less";
-			} else if ( toggle_items[i].innerText.toLowerCase() == "see less" ) {
-				toggle_items[i].innerText = "See more";
-			}
-		});
-	}
-});
+// $(document).ready( function() { // jquery v
+// 	let toggle_items = document.getElementsByClassName('s-collapse-toggle');
+//
+// 	for (let i = 0; i < toggle_items.length; i++) { // add to all class members
+// 		toggle_items[i].addEventListener('click',function(){
+// 			if ( toggle_items[i].innerText.toLowerCase() == "see more" ) {
+// 				toggle_items[i].innerText = "See less";
+// 			} else if ( toggle_items[i].innerText.toLowerCase() == "see less" ) {
+// 				toggle_items[i].innerText = "See more";
+// 			}
+// 		});
+// 	}
+// });

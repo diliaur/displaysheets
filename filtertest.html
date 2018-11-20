@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Test of ListJS filtering for refactor</title>
+    <style type="text/css">
+      table {
+        border-collapse: collapse;
+      }
+      table td, table th {
+        padding: .5em;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+
+Attempt: combine the results of multiple checkboxes in filtration.
+<div id="people">
+  <p>
+    <input type="text" class="search" name="search" placeholder="Search">
+  </p>
+  <p>
+    <label for="filter-Jones"><input type="checkbox" id="filter-Jones" name="filter-Jones" value="">Jones</label>
+    <label for="filter-Zara"><input type="checkbox" id="filter-Zara" name="filter-Zara" value="">Zara</label>
+  </p>
+  <button type="button" name="button" class="sort" data-sort="firstName">Sort by First Name</button>
+  <table>
+    <thead>
+      <tr>
+        <th class="sort" data-sort="firstName">First Name</th>
+        <th class="sort" data-sort="lastName">Last Name</th>
+        <th class="sort" data-sort="year">Year of Birth</th>
+        <th class="sort" data-sort="hometown">Hometown</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr>
+        <td class="firstName">Zara</td>
+        <td class="lastName">Jones</td>
+        <td class="year">1980</td>
+        <td class="hometown">Buffalo</td>
+      </tr>
+      <tr>
+        <td class="firstName">Felicity</td>
+        <td class="lastName">Jones</td>
+        <td class="year">1995</td>
+        <td class="hometown">New York City</td>
+      </tr>
+      <tr>
+        <td class="firstName">Gina</td>
+        <td class="lastName">Mango</td>
+        <td class="year">1987</td>
+        <td class="hometown">Los Angeles</td>
+      </tr>
+      <tr>
+        <td class="firstName">Jones</td>
+        <td class="lastName">Wilkinson</td>
+        <td class="year">1992</td>
+        <td class="hometown">Hanover</td>
+      </tr>
+      <tr>
+        <td class="firstName">Lara</td>
+        <td class="lastName">Croft</td>
+        <td class="year">1968</td>
+        <td class="hometown">London</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+    <!-- List.js for sort and filter -->
+  	<script src="list.min.js"></script>
+    <!-- custom -->
+    <script>
+      var options = {
+        valueNames: ['firstName','lastName','year','hometown']
+      }
+
+      var peopleList = new List('people',options);
+
+      // items matching currently active filter, incl no filter (I think)
+      // var filteredItems = peopleList.matchingItems;
+
+      // filter function to attach to each event listener. generalizable.
+      // lets multiple checkboxes do their work together
+      // uses the global filterTerms ??? or not?
+
+      // function filter(element='',filterField='',includeTerms='') {
+      //   // element is element ID
+      //   // sortOn is object with field:"term1,term2,term3"
+      //   let e = document.getElementById(element);
+      //   e.addEventListener('click',function(){
+      //     if (e.checked) { // if the box is checked
+      //       // then do the filtration
+      //       peopleList.filter(function(row){
+      //         // whether to filter this row or not:
+      //         let filtered = false;
+      //
+      //         // create the filter
+      //         if (row.values()[filterField].toLowerCase().includes(includeTerms)) {
+      //           filtered = true;
+      //           console.log(row.values()[filterField]);
+      //         }
+      //
+      //         // return value
+      //         return filtered;
+      //       });
+      //     } else { // if the box is unchecked
+      //       peopleList.filter();
+      //     }
+      //   })
+      //
+      // }
+      //
+      // // call filter function for each checkbox
+      // filter('filter-Jones','lastName','jones');
+      // filter('filter-Zara','firstName','zara');
+
+      var isFiltered = 0; // global to keep track of filters
+
+      document.getElementById('filter-Jones').addEventListener('click',function(){
+        if (document.getElementById('filter-Jones').checked) {
+          peopleList.search('Jones',['firstName','lastName']);
+          // isFiltered++;
+          // console.log(isFiltered);
+          // console.log(peopleList.searched);
+        } else {
+          // isFiltered--;
+          // console.log(isFiltered);
+          // if (!peopleList.searched) {
+          //   peopleList.search();
+          // }
+          // console.log(peopleList.searched);
+          // need to find a way to return the list minus the current filters.
+          peopleList.search(); // clear
+
+          // maybe do a check for which checkboxes are still checked &
+          // derive their values (in List.search()) from that . . .
+        }
+      });
+
+      document.getElementById('filter-Zara').addEventListener('click',function(){
+        if (document.getElementById('filter-Zara').checked) {
+          peopleList.search('Zara',['firstName']);
+          // isFiltered++;
+          // console.log(isFiltered);
+          // console.log(peopleList.searched);
+        } else {
+          // isFiltered--;
+          // console.log(isFiltered);
+          // if (!peopleList.searched) {
+          //   peopleList.search();
+          // }
+          // console.log(peopleList.searched);
+          peopleList.search(); // clear
+        }
+      });
+
+    </script>
+  </body>
+</html>

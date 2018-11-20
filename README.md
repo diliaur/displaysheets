@@ -6,14 +6,13 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 
 ## To Do
 
-- [ ] Add case to handle multiple checkboxes in the same category(?) - might require some kind of global query tracker
-- [ ] Add column for deadlines
-- ~[ ] Sticky first column (award names) (maybe)~
-- [ ] Add responsive sidebar to house checkbox filtration or other info
+- [ ] Add case to handle multiple checkboxes - might require some kind of global query tracker
+- [ ] Add column for deadlines (in original spreadsheet)
 - [ ] Find a more robust way to pull this off.
 	- _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if the API breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
 
 ## Done
+- [x] (2018-11-19) Add responsive sidebar to house checkbox filtration or other info
 - [x] (2018-11-16) Create simple collapse pane toggle WITHOUT bootstrap - currently need BS4 but don't want to use it because it throws off page styling
 	- Note: Used Semantic UI.
 - [x] (2018-20-26) Make header row (and maybe search bar also) sticky

@@ -126,11 +126,63 @@
 			$('.ui.left.sidebar').sidebar('toggle');
 		});
 	</script>
+
 	<!-- Tabletop -->
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
 	<!-- List.js for sort and filter -->
 	<script src="list.min.js"></script>
 	<!-- custom -->
-	<script src="scholarships.js"></script>
+	<!-- <script src="scholarships.js"></script> -->
+	<!-- Test rewrite of list & filter functionality -->
+	<script>
+		/*
+		* processing data from google sheet via Tabletop
+		*/
+		var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/13JTS8DX4z5BZ6bTwgkmssxcERodv6Tl5OKaj_EJ2qIA/edit?usp=sharing';
+
+		function init() {
+			Tabletop.init( { key: publicSpreadsheetUrl,
+											 callback: showInfo,
+											 simpleSheet: true,
+										 prettyColumnNames: false} )
+		}
+
+		function showInfo(data, tabletop) {
+			console.log('Successfully processed!')
+			// data is an array of objects
+			console.log(data);
+
+			/*
+			 * ListJS initialization
+			 */
+			var options = {
+				valueNames: [ 'name', {name: 'url', attr: 'href'}, 'fundsource', 'fundingtype', 'length',
+								'placeofstudy', 'seacountryfocus', 'disciplinefocus',
+								'gradelevel', 'citizenship', 'contactname', 'contactemail'],
+				item: '<tr><td class="name">Name</td><td><a class="url" target="_blank">More Info</a></td><td class="fundsource">Funding Source</td><td class="fundingtype">Funding Type</td><td class="length">Length</td><td class="placeofstudy">Place of Study</td><td class="seacountryfocus">SEA Country Focus</td><td class="disciplinefocus">Discipline Focus</td><td class="gradelevel">Class Level</td><td class="citizenship">Citizenship Requirement</td><td class="contactname">Contact Name</td><td class="contactemail">Contact Email</td></tr>'
+			};
+
+			var awardList = new List('list-wrapper', options, data); // attach list to HTML element
+
+			/*
+			 * List filtration controls
+			 */
+
+			let checked_countries = [];
+
+			document.getElementById('country-brunei').addEventListener('click',function(){
+				if (document.getElementById('country-brunei').checked) {
+					// append current country to 'checked_countries'
+
+					// filter the list by checked_countries
+				} else {
+					// remove current country from 'checked_countries'
+					// filter the list again -- either empty or with remaining countries
+				}
+			});
+		}
+
+		window.addEventListener('DOMContentLoaded', init) // actually calls the tabletop code
+	</script>
 </body>
 </html>

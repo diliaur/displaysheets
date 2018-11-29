@@ -260,16 +260,25 @@
 				}
 			});
 
+			//========================================================================
+			// REUSABLE FUNCTIONS
+
+			/**
+			 * Check/Uncheck function
+			 * Controls what happens when the checkbox is checked or unchecked.
+			 * Called by event listener.
+			 */
+			function if_checked() { // need to decide params
+
+			}
+
 			/**
 			 * Reusable filter wrapper function
-			 * A reusable function to run through any country checkbox
+			 * Is called by the Check/Uncheck function. Determines how to apply
+			 * filters or whether to unfilter the list.
 			 **/
-			function filter_by_checkbox(filter_col = '', filter_terms = []) {
-				if (filter_col != '') {
+			function checked_filter() { // need to decide on params
 
-				} else {
-					console.log("Need to have a column to filter.");
-				}
 			}
 
 		}

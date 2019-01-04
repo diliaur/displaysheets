@@ -133,6 +133,7 @@
 	<script src="list.min.js"></script>
 	<!-- custom -->
 	<!-- <script src="scholarships.js"></script> -->
+
 	<!-- Test rewrite of list & filter functionality -->
 	<script>
 		/*
@@ -169,34 +170,19 @@
 			 */
 
 			let checked_countries = [];
+			let countryCheckboxIds = ['country-brunei','country-cambodia','country-indonesia',
+			'country-laos','country-malaysia','country-myanmar','country-philippines',
+			'country-singapore','country-thailand','country-timor-leste','country-vietnam'];
 
-			document.getElementById('country-brunei').addEventListener('click',function(){
-				if (document.getElementById('country-brunei').checked) {
-					// append current country to 'checked_countries'
-					checked_countries.push('Brunei');
+			function filter_by_country( elementId ) {
+				document.getElementById(elementId).addEventListener('click',function(){
+					if (document.getElementById(elementId).checked) {
 
-					// filter the list by checked_countries
-					awardList.filter(function(row){
-						let filter = false; // whether to filter or not
-						checked_countries.forEach(e => {
-							// if the 'seacountryfocus' col contains ANY of the checked_countries
-							//   which SHOULD include Brunei by default since it's been added above
-							if(row.values()['seacountryfocus'].toLowerCase().includes(e.toLowerCase())) {
-								filter = true;
-							} // no else, because if it never hits any of these IFs then it's already false
-						});
-						return filter;
-					});
-					console.log(checked_countries);
-				} else { // unchecked
-					// remove current country from 'checked_countries'
-					let remove_i = checked_countries.indexOf('Brunei');
-					if (remove_i > -1) {
-						checked_countries.splice(remove_i,1); // splice out country
-						console.log(checked_countries);
-					}
-					// filter the list again -- either empty or with remaining countries
-					if (checked_countries != "") { // if there are elements
+						// append current country to 'checked_countries'
+						checked_countries.push(this.value);
+						console.log(this,this.id,this.value);
+
+						// filter the list by checked_countries
 						awardList.filter(function(row){
 							let filter = false; // whether to filter or not
 							checked_countries.forEach(e => {
@@ -204,60 +190,41 @@
 								//   which SHOULD include Brunei by default since it's been added above
 								if(row.values()['seacountryfocus'].toLowerCase().includes(e.toLowerCase())) {
 									filter = true;
-									print(e);
 								} // no else, because if it never hits any of these IFs then it's already false
 							});
 							return filter;
 						});
-					} else { // no elements to filter on
-						awardList.filter();
-					}
-				}
-			});
-
-			document.getElementById('country-cambodia').addEventListener('click',function(){
-				if (document.getElementById('country-cambodia').checked) {
-					// append current country to 'checked_countries'
-					checked_countries.push('Cambodia');
-
-					// filter the list by checked_countries
-					awardList.filter(function(row){
-						let filter = false; // whether to filter or not
-						checked_countries.forEach(e => {
-							// if the 'seacountryfocus' col contains ANY of the checked_countries
-							//   which SHOULD include Brunei by default since it's been added above
-							if(row.values()['seacountryfocus'].toLowerCase().includes(e.toLowerCase())) {
-								filter = true;
-							} // no else, because if it never hits any of these IFs then it's already false
-						});
-						return filter;
-					});
-					console.log(checked_countries);
-				} else { // unchecked
-					// remove current country from 'checked_countries'
-					let remove_i = checked_countries.indexOf('Cambodia');
-					if (remove_i > -1) {
-						checked_countries.splice(remove_i,1); // splice out country
 						console.log(checked_countries);
-					}
-					// filter the list again -- either empty or with remaining countries
-					if (checked_countries != "") { // if there are elements
-						awardList.filter(function(row){
-							let filter = false; // whether to filter or not
-							checked_countries.forEach(e => {
-								// if the 'seacountryfocus' col contains ANY of the checked_countries
-								//   which SHOULD include Brunei by default since it's been added above
-								if(row.values()['seacountryfocus'].toLowerCase().includes(e.toLowerCase())) {
-									filter = true;
-									print(e);
-								} // no else, because if it never hits any of these IFs then it's already false
+					} else { // unchecked
+						// remove current country from 'checked_countries'
+						let remove_i = checked_countries.indexOf(this.value);
+						if (remove_i > -1) {
+							checked_countries.splice(remove_i,1); // splice out country
+							console.log(checked_countries);
+						}
+						// filter the list again -- either empty or with remaining countries
+						if (checked_countries != "") { // if there are elements
+							awardList.filter(function(row){
+								let filter = false; // whether to filter or not
+								checked_countries.forEach(e => {
+									// if the 'seacountryfocus' col contains ANY of the checked_countries
+									//   which SHOULD include Brunei by default since it's been added above
+									if(row.values()['seacountryfocus'].toLowerCase().includes(e.toLowerCase())) {
+										filter = true;
+										console.log(e);
+									} // no else, because if it never hits any of these IFs then it's already false
+								});
+								return filter;
 							});
-							return filter;
-						});
-					} else { // no elements to filter on
-						awardList.filter();
+						} else { // no elements to filter on
+							awardList.filter();
+						}
 					}
-				}
+				});
+			}
+
+			countryCheckboxIds.forEach( function(countryElementId) {
+				filter_by_country(countryElementId);
 			});
 
 			//========================================================================

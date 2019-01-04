@@ -1,9 +1,28 @@
+/*
+ * Sidebar
+ */
 .sidebar {
-	background-color:#ec4838;
+	background-color:#9d1c0f;
 	color:white;
 	padding: 1em;
 	word-break: break-word;
 }
+.sidebar a,
+.sidebar a:active,
+.sidebar a:visited {
+	color: white;
+	font-weight:bolder;
+	text-decoration: underline;
+}
+.sidebar a:hover {
+	color: white;
+	font-weight:bolder;
+	text-decoration: none;
+}
+
+/*
+ * List of scholarships
+ */
 #award-wrapper {
 	overflow-x: scroll;
 	white-space: nowrap; /* this needs to be used in conjunction with overflow */
@@ -11,6 +30,7 @@
 #awards-table td {
 	white-space: normal; /* this collapses content in cells */
 }
+
 /*
  * Search bars
  */

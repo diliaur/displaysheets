@@ -281,6 +281,7 @@
 			}
 
 			// FILTER BY COUNTRY
+			// -----------------------------------------------------------------------
 			let countryCheckboxIds = ['country-brunei','country-cambodia','country-indonesia',
 			'country-laos','country-malaysia','country-myanmar','country-philippines',
 			'country-singapore','country-thailand','country-timor-leste','country-vietnam'];
@@ -291,22 +292,60 @@
 			});
 
 			// FILTER BY FUND SOURCE
-			let fundSourceCheckboxIds = ['fund-source-internal','fund-source-external'];
-			// fundSourceCheckboxIds.forEach( function( fundSourceElementId ) {
-			// 	filter_by_checkbox(fundSourceElementId,'fundsource');
-			// });
-
+			// -----------------------------------------------------------------------
 			filter_by_checkbox('fund-source-internal','fundsource',['internal']);
 			filter_by_checkbox('fund-source-external','fundsource',['external']);
 
-			// FILTER BY CITIZENSHIP
+			let fund_in = document.getElementById('fund-source-internal');
+			let fund_ex = document.getElementById('fund-source-external');
 
+			fund_in.addEventListener('click',function(){
+				if (fund_in.checked) {
+					fund_ex.checked = false; // uncheck the other one.
+				}
+			});
+
+			fund_ex.addEventListener('click',function(){
+				if (fund_ex.checked) {
+					fund_in.checked = false;
+				}
+			});
+
+			// FILTER BY CITIZENSHIP
+			// -----------------------------------------------------------------------
 			// US Citizenship
 			filter_by_checkbox('eligibility-citizenship-us','citizenship',
 							   ['us','united states'],['non-us']);
 
+		  // FILTER BY GRADE/PROFESSIONAL LEVEL
+			// -----------------------------------------------------------------------
+			// * undergrad awards
+			filter_by_checkbox('eligibility-level-undergraduate','gradelevel',['undergrad','undergraduate']);
 
-		
+			// * grad awards
+			//   those which contain the term 'grad/graduate' but not
+			//   as part of the word 'undergrad/undergraduate'. This one is tricky because its
+			//   include term is a subset of another word that may exist in the same field.
+			//   SO WE USE REGULAR EXPRESSIONS
+			let boxGraduate = document.getElementById('eligibility-level-graduate');
+			boxGraduate.addEventListener('click',function(){
+				if (boxGraduate.checked) { // filter
+					awardList.filter( function(item) {
+						let re = /(\bgraduate)/gi; // regular expression matching only 'graduate' (case-insensitive flag 'i')
+						if (item.values().gradelevel.match(re)) {
+							return true;
+						} else {
+							return false;
+						}
+					});
+				} else { // reset
+					awardList.filter();
+				}
+			});
+
+			// * professional awards
+			filter_by_checkbox('eligibility-level-professional','gradelevel',['professional']);
+
 			//========================================================================
 			// REUSABLE FUNCTIONS
 

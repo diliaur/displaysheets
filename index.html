@@ -296,6 +296,8 @@
 			filter_by_checkbox('fund-source-internal','fundsource',['internal']);
 			filter_by_checkbox('fund-source-external','fundsource',['external']);
 
+			// so that only one is checked at a time --
+			// (fund source can't be both internal & external)
 			let fund_in = document.getElementById('fund-source-internal');
 			let fund_ex = document.getElementById('fund-source-external');
 
@@ -307,7 +309,7 @@
 
 			fund_ex.addEventListener('click',function(){
 				if (fund_ex.checked) {
-					fund_in.checked = false;
+					fund_in.checked = false; // uncheck the other one.
 				}
 			});
 

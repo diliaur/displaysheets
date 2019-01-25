@@ -1,5 +1,3 @@
-// console.log("connected!");
-
 /*
 * processing data from google sheet via Tabletop
 */
@@ -7,9 +5,9 @@ var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/13JTS8DX4z5BZ
 
 function init() {
 	Tabletop.init( { key: publicSpreadsheetUrl,
-	                 callback: showInfo,
-	                 simpleSheet: true,
-	             	 prettyColumnNames: false} )
+									 callback: showInfo,
+									 simpleSheet: true,
+								 prettyColumnNames: false} )
 }
 
 function showInfo(data, tabletop) {
@@ -17,216 +15,134 @@ function showInfo(data, tabletop) {
 	// data is an array of objects
 	console.log(data);
 
-	/* do the list.js stuff ... in here I guess */
-
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 *                                                                           *
+	 * ListJS INITIALIZATION                                                     *
+	 *                                                                           *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 	var options = {
 		valueNames: [ 'name', {name: 'url', attr: 'href'}, 'fundsource', 'fundingtype', 'length',
-					  'placeofstudy', 'seacountryfocus', 'disciplinefocus',
-					  'gradelevel', 'citizenship', 'contactname', 'contactemail'],
+						'placeofstudy', 'seacountryfocus', 'disciplinefocus',
+						'gradelevel', 'citizenship', 'contactname', 'contactemail'],
 		item: '<tr><td class="name">Name</td><td><a class="url" target="_blank">More Info</a></td><td class="fundsource">Funding Source</td><td class="fundingtype">Funding Type</td><td class="length">Length</td><td class="placeofstudy">Place of Study</td><td class="seacountryfocus">SEA Country Focus</td><td class="disciplinefocus">Discipline Focus</td><td class="gradelevel">Class Level</td><td class="citizenship">Citizenship Requirement</td><td class="contactname">Contact Name</td><td class="contactemail">Contact Email</td></tr>'
 	};
 
-	var awardList = new List('list-wrapper', options, data);
+	var awardList = new List('list-wrapper', options, data); // attach list to HTML element
 
+	/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+	 *                                                                           *
+	 * ListJS FILTRATION                                                         *
+	 *                                                                           *
+	 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
-	/* ---------------------------------------------------------------------- *
-	 *
-	 * FILTER CHECK BOXES
-	 *
-	 * ---------------------------------------------------------------------- */
+	 // values for category filters
+		 // this filter object will be updated as categories are checked
+		 // and used to refilter the list every time
 
-	// var current
+	// if values are set they're for testing purposes
+	 let filters = {
+		 country: ['Cambodia','Vietnam','Laos'],
+		 fundSource: ['Internal'],
+		 citizenship: [],
+		 classLevel: [],
+	 }
 
-	/* Checkbox Filter Function
-	--------------------------------------------------------------------------*/
+	 //////////////////
+	 // target_id is the actual checkbox element id
+	 // target_category is the category which matches the key in filters, above
+	 function filter_by_checkbox(target_id,target_category){
 
-	// function comparison
-	function filter_by_checkbox(elementName,targetField='',includeTerms=[],excludeTerms=[]) {
-		let e = document.getElementById(elementName);
-		e.addEventListener('click',function(){
-			if (e.checked) {
+		 // IF CHECKED
 
-				// converts term lists to arrays if they aren't, for looping purposes
-				// really only works if there is a single term
-				if (!Array.isArray(includeTerms)) {
-					includeTerms = new Array(includeTerms);
-				}
-				if (!Array.isArray(excludeTerms)) {
-					excludeTerms = new Array(excludeTerms);
-				}
+				 // first: add value of target_id to filters['target_category']
 
-				awardList.filter( function(row) {
+				 // then: call filter on filters
 
-					// test if any of the required includeTerms is found in the phrase
-					hasIncludeTerm = false;
+		 // IF UNCHECKED
 
-					includeTerms.forEach( e => {
-						if (row.values()[targetField].toLowerCase().includes(e)) {
-							hasIncludeTerm = true;
-						}
-					});
+		 		// first: if unchecked, remove value of target_id from filters['target_category']
+		 
+	 }
 
-					// test if targetField has any excludeTerms
-					//   if it has excludeTerms, the field does not match the query
-					//   example: we want a query for US citizenship to match with
-					//       the term "US" but not with the term "non-US", of which
-					//       "US" is a substring. So we need to explicitly exclude
-					//       "non-US".
-					hasExcludeTerm = false;
+	 //////////////////
 
-					excludeTerms.forEach( e => {
-						if (row.values()[targetField].toLowerCase().includes(e)) {
-							hasExcludeTerm = true;
-						}
-					});
+	 document.getElementById(target_id).addEventListener('click', function(){
+		 if (this.checked) {
+			 awardList.filter( function(row) {
+				 let country_filter     = false;
+				 let fund_source_filter = false;
+				 let citizenship_filter = false;
+				 let class_level_filter = false;
 
-					/* EDGE CASE TO BE FIXED:
-						If there are both include terms and exclude terms, and
-						the exclude term is a subset or the include terms or
-						vice-versa, then... what do?
-					*/
+				 // checks if any of the filters['country'] terms exist in the row
+				 filters.country.forEach( e => {
+					 if (row.values()['seacountryfocus'].toLowerCase().includes(e.toLowerCase())) {
+						 country_filter = true;
+					 }
+				 });
 
+				 // checks if any of the filters['fundSource'] terms exist in the row
+					 // this one is special -- only one or the other can exist. but this is
+					 // handled in the appending to the filter term object
+				 filters.fundSource.forEach( e => {
+					 if (row.values()['fundsource'].toLowerCase().includes(e.toLowerCase())) {
+						 fund_source_filter = true;
+					 }
+				 });
 
-					if (hasIncludeTerm && !hasExcludeTerm) {
-						return true;
-					} else {
-						return false;
-					}
+				 // check for match on citizenship
+				 filters.citizenship.forEach ( e => {
+					 if (row.values()['citizenship'].toLowerCase().includes(e.toLowerCase())) {
+						 citizenship_filter = true;
+					 }
+				 });
 
-				});
+				 // check for match on classLevel
+				 filters.classLevel.forEach( e => {
+					 if (row.values()['gradelevel'].toLowerCase().includes(e.toLowerCase())) {
+						 class_level_filter = true;
+					 }
+				 });
 
-			} else { // return to full list if box unchecked
-				awardList.filter();
-			}
-		});
-	}
+				 // can only be truly false if they were checked tho -- if unchecked,
+				 // that is if there are no terms in the category, it shouldn't flag false
+				 // hence reset each sub-filter to true if it hasn't been checked (since,
+			   // technically, if they haven't specified a sub-filter then ANY result in
+			   // that sub-area will be acceptable.)
 
-	/* Filter by Country
-	--------------------------------------------------------------------------*/
+				 if (filters['country'].length <= 0) {
+					 country_filter = true;
+				 }
 
-	seaCountries = [['brunei','country-brunei'],['cambodia','country-cambodia'],
-	['indonesia','country-indonesia'],['laos','country-laos'],
-	['malaysia','country-malaysia'],['myanmar','country-myanmar'],
-	['philippines','country-philippines'],['singapore','country-singapore'],
-	['thailand','country-thailand'],['timor-leste','country-timor-leste'],
-	['vietnam','country-vietnam']];
+				 if (filters['fundSource'].length <= 0) {
+				 	fund_source_filter = true;
+				 }
 
-	seaCountries.forEach( function(country) {
-		// parameters: elementName, targetField, includeTerms (nothing to exclude)
-		filter_by_checkbox(country[1],'seacountryfocus',country[0]);
-	});
+				 if (filters['citizenship'].length <= 0) {
+				 	citizenship_filter = true;
+				 }
 
-	/* Filter by Scholarship Criteria (e.g. internal/external funding)
-	--------------------------------------------------------------------------*/
+				 if (filters['classLevel'].length <= 0) {
+				 	class_level_filter = true;
+				 }
 
-	filter_by_checkbox('fund-source-internal','fundsource',['internal']);
-	filter_by_checkbox('fund-source-external','fundsource',['external']);
+				 // return whether to filter this row or not
+				 return (country_filter && fund_source_filter && citizenship_filter && class_level_filter);
 
-	/* Filter by Citizenship
-	--------------------------------------------------------------------------*/
+			 });
+		 } else {
+			 awardList.filter();
+		 }
+	 });
 
-	filter_by_checkbox('eligibility-citizenship-us','citizenship',
-					   ['us','united states'],['non-us']);
+	 /////////////////////////////////////////////////////////////////////////////
+	 /////////////////////////////////////////////////////////////////////////////
+	 /////////////////////////////////////////////////////////////////////////////
+	 /////////////////////////////////////////////////////////////////////////////
 
+	 // kay now writing all the tingz
 
-	// can't use filter_by_checkbox() because this is kind of a special case. UGH
-	// also this filter doesn't really work at the moment.
-	// let boxNonUS = document.getElementById('eligibility-citizenship-nonus');
-	// boxNonUS.addEventListener('click',function() {
-	// 	if (boxNonUS.checked) {
-	// 		awardList.filter( function(item) {
-	// 			let re = /([^us])/gi;
-	// 			if (item.values().citizenship.match(re)) {
-	// 				return true;
-	// 			} else {
-	// 				return false;
-	// 			}
-	// 		});
-	// 	} else {
-	// 		awardList.filter();
-	// 	}
-	// });
-
-	/* Grade/class Level
-	--------------------------------------------------------------------------*/
-
-	// * undergrad awards
-	filter_by_checkbox('eligibility-level-undergraduate','gradelevel',['undergrad','undergraduate']);
-
-	// * grad awards
-	//   those which contain the term 'grad/graduate' but not
-	//   as part of the word 'undergrad/undergraduate'. This one is tricky because its
-	//   include term is a subset of another word that may exist in the same field.
-	//   SO WE USE REGULAR EXPRESSIONS
-	let boxGraduate = document.getElementById('eligibility-level-graduate');
-	boxGraduate.addEventListener('click',function(){
-		if (boxGraduate.checked) { // filter
-			awardList.filter( function(item) {
-				let re = /(\bgraduate)/gi; // regular expression matching only 'graduate' (case-insensitive flag 'i')
-				if (item.values().gradelevel.match(re)) {
-					return true;
-				} else {
-					return false;
-				}
-			});
-		} else { // reset
-			awardList.filter();
-		}
-	});
-
-	// * professional awards
-	filter_by_checkbox('eligibility-level-professional','gradelevel',['professional']);
 
 }
 
-window.addEventListener('DOMContentLoaded', init)
-
-/* ------------------------------ *
- * Sticky table header
- * ------------------------------ */
-
-// if the table header hits the top of the window it should stick
-
-// $(document).ready( function() { //jquery
-
-	// grab all th
-	// let sticky_header = document.getElementsByTagName("th");
-	// // find height of scroll bar so it can push down the sticky header
-	// let buffer_height = document.getElementById("search-wrapper").clientHeight;
-	//
-	// // INLINE (:'() styles to add to each th
-	// let styles = {
-	// 	"position":"sticky",
-	// 	"top": buffer_height
-	// };
-	//
-	// // add styles to each th
-	// for (let i = 0; i < sticky_header.length; i++){
-	// 	$(sticky_header[i]).css(styles);
-	// }
-// });
-
-
-/* ------------------------------ *
- * Checkbox filtration template
- * ------------------------------ */
-
-/* ---------------------------------------- *
- * Target a "collapsible" element's control
- * ---------------------------------------- */
-
-// toggles text between "See more" and "See less"
-
-// $(document).ready( function() { // jquery v
-// 	let toggle_items = document.getElementsByClassName('s-collapse-toggle');
-//
-// 	for (let i = 0; i < toggle_items.length; i++) { // add to all class members
-// 		toggle_items[i].addEventListener('click',function(){
-// 			if ( toggle_items[i].innerText.toLowerCase() == "see more" ) {
-// 				toggle_items[i].innerText = "See less";
-// 			} else if ( toggle_items[i].innerText.toLowerCase() == "see less" ) {
-// 				toggle_items[i].innerText = "See more";
-// 			}
-// 		});
-// 	}
-// });
+window.addEventListener('DOMContentLoaded', init) // actually calls the tabletop code

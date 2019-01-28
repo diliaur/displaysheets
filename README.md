@@ -8,11 +8,11 @@ This is a small app to allow filtration and search of [CSEAS](http://www.cseasha
 
 - [ ] Add special-case filtration back in for citizenship column and grad/undergrad terms
 - [ ] Add function comment headers
-- [ ] Add column for deadlines (in original spreadsheet)
-- [ ] Find a more robust way to pull this off.
-	- _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if the API breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
+- [ ] Find a more robust way to implement this.
+	- _2018/09/05_ Need the simplicity of Google Sheets for non-technical users to edit the spreadsheet & don't want to build a whole other (ungeneralizable) mini-CMS just to plug back into wordpress. But also don't want to risk the whole project going offline if either of the APIs breaks. Maybe can use Tabletop to export the spreadsheet & cache that.
 
 ## Done
+- [x] (2019-01-28) Add column for deadlines
 - [x] (2019-01-25) Make checkboxes work together across category; e.g. don't completely reset the filtration when others are checked/unchecked.
 - [x] (2018-11-28) Add case to handle multiple checkboxes - might require some kind of global query tracker
 - [x] (2018-11-19) Add responsive sidebar to house checkbox filtration or other info

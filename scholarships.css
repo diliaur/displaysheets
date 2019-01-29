@@ -2,7 +2,7 @@
  * Sidebar
  */
 .sidebar {
-	background-color:#9d1c0f;
+	background-color:#333;
 	color:white;
 	padding: 1em;
 	word-break: break-word;
@@ -59,4 +59,22 @@ input.search {
  */
 #filter-options label {
 	display:block;
+}
+
+/*
+ * Semantic UI menu customizations
+ */
+.menu {
+	background-color: #9d1c0f!important;
+}
+.menu .item {
+	color: #fff!important;
+}
+/*
+ * Miscellaneous
+ */
+
+.back-to-cseas {
+	/* the back to the main site link */
+	padding: 1em;
 }
